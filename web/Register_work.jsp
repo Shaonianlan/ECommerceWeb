@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.sql.*" import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="util.ConnectionManager" %>
 <html>
 <head>
     <title>REGISTER</title>
@@ -22,11 +23,7 @@
             String email = request.getParameter("email");
             String address = request.getParameter("address");
 
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/ecweb" ;
-            String username = "root" ;
-            String password = "5jiu2DNF" ;
-            Connection con = DriverManager.getConnection(url,username,password);
+            Connection con = ConnectionManager.getConnection();
             String sql = "SELECT user_name from user_info where user_name=?";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1,user_name);

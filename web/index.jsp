@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.sql.*" %>
+<%@ page import="util.ConnectionManager" %>
 <html class="formposition">
   <head>
     <title>登陆</title>
@@ -32,11 +33,7 @@
       String user_name = request.getParameter("username");
       String userpassword = request.getParameter("password");
       if(user_name != null) {
-          Class.forName("com.mysql.jdbc.Driver");
-          String url = "jdbc:mysql://localhost:3306/ecweb";
-          String username = "root";
-          String password = "5jiu2DNF";
-          Connection con = DriverManager.getConnection(url, username, password);
+          Connection con = ConnectionManager.getConnection();
           String sql = "SELECT user_name,user_password from user_info where user_name=?";
           PreparedStatement pstmt = con.prepareStatement(sql);
           pstmt.setString(1, user_name);

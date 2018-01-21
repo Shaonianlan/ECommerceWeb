@@ -1,0 +1,36 @@
+package util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+/**
+ * Created by 10096 on 2018/1/21.
+ */
+public class ConnectionManager {
+    public  static Connection getConnection()throws SQLException{
+        Connection con = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/ecweb" ;
+            String username = "root" ;
+            String password = "5jiu2DNF" ;
+            con = DriverManager.getConnection(url,username,password);
+        }
+        catch (Exception e){
+            throw new SQLException("不能取得数据库连接！");
+        }
+        return con;
+    }
+    public static void closeConnection(Connection con){
+        try{
+            if(con != null && (!con.isClosed())){
+                con.close();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+}
