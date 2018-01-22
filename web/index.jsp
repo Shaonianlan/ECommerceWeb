@@ -7,7 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.sql.*" %>
 <%@ page import="util.ConnectionManager" %>
-<html class="formposition">
+<%@ page import="business.CustomerDAO" %>
+<%@ page import="mode.Customer" %>
+<html>
   <head>
     <title>登陆</title>
     <link type="text/css" rel="stylesheet" href="style.css">
@@ -40,7 +42,9 @@
           ResultSet rs = pstmt.executeQuery();
           if (rs.next()) {
               if (userpassword.equals(rs.getString("user_password"))) {
-                  response.sendRedirect("1.jsp");
+                  Customer Log_user = CustomerDAO.getLoginInfo(user_name);
+                  session.setAttribute("user",Log_user);
+                  response.sendRedirect("home.jsp");
               }
               else {
                   out.print("<script type='text/javascript'>alert('密码错误');</script>");
