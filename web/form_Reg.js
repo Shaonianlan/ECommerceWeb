@@ -54,7 +54,7 @@ function check_Reg(){
         useremail_flag = false;
     }
     else{
-        var myregex = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
+        var myregex = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
         if(myregex.test(email)){
             document.getElementById("showemail").innerHTML="   ";
         }

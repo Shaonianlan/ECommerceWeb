@@ -16,9 +16,14 @@
     <body>
         <%
             Customer Log_user = (Customer) session.getAttribute("user");
-            out.print(Log_user.getUser_name()+" ,"+ CustomerDAO.getHello()+"    ");
-            out.print("<a href='Alter_userinfo.jsp'>修改个人信息</a>");
-
+            if(Log_user == null){
+                out.print("<a href='index.jsp'>登陆</a>");
+            }
+            else {
+                out.print(Log_user.getUser_name() + " ," + CustomerDAO.getHello() + "    ");
+                out.print("<a href='Logout.jsp'>注销</a><br>");
+                out.print("<a href='Alter_userinfo.jsp'>修改个人信息</a>");
+            }
         %>
     </body>
 </html>
