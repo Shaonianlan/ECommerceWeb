@@ -27,18 +27,23 @@
             Customer Log_user = (Customer) session.getAttribute("user");
             String username = Log_user.getUser_name();
             //连接数据库
+            Connection con = null;
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
             try {
-                Connection con = ConnectionManager.getConnection();
+                con = ConnectionManager.getConnection();
                 String sql = "UPDATE user_info SET user_address = ? where user_name=?";
-                PreparedStatement pstmt = con.prepareStatement(sql);
+                pstmt = con.prepareStatement(sql);
                 pstmt.setString(1, new_aadress);
                 pstmt.setString(2, username);
                 pstmt.executeUpdate();
-                //关闭连接
-                pstmt.close();
-                con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
+            }
+            finally {
+                ConnectionManager.closeConnection(con);
+                ConnectionManager.closeResultSet(rs);
+                ConnectionManager.closeStatement(pstmt);
             }
             response.sendRedirect("Alter_userinfo.jsp");
         }

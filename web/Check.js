@@ -1,7 +1,34 @@
 /**
  * Created by 10096 on 2018/1/19.
  */
-function check_Reg(){
+function check_log(){
+    var username_flag = true;
+    var userpass_flag = true;
+    var username = document.form_log.username.value;
+    var password = document.form_log.password.value;
+    if(username == ""){
+        document.getElementById("showname").innerHTML="   用户名不能为空";
+        username_flag = false;
+    }
+    else{
+        document.getElementById("showname").innerHTML="";
+    }
+    if(password == ""){
+        document.getElementById("showpasssword").innerHTML="   密码不能为空";
+        userpass_flag = false;
+    }
+    else{
+        document.getElementById("showpasssword").innerHTML="";
+    }
+    if (userpass_flag && username_flag){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function check_reg(){
     var username_flag = true;
     var userpass_flag = true;
     var userpass_flag2 = true;
@@ -76,4 +103,44 @@ function check_Reg(){
     else{
         return false;
     }
+}
+
+function check_newphone() {
+    var flag = false;
+    var new_phonenum = document.form_newphone.new_phonenum.value;
+    if(new_phonenum != null){
+        var myreg = /^1[34578]\d{9}$/;
+        if(myreg.test(new_phonenum)){
+            flag = true;
+        }
+        else {
+            flag = false;
+            alert("请输入正确格式的手机号码");
+        }
+    }
+    else {
+        flag = false;
+        alert("新号码不能为空");
+    }
+    return flag;
+}
+
+function check_newemail() {
+    var flag = false;
+    var new_email = document.form_newemail.new_email.value;
+    if(new_email != null){
+        var myregex = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+        if(myregex.test(new_email)){
+            flag = true;
+        }
+        else {
+            lag = false;
+            alert("邮箱格式错误");
+        }
+    }
+    else {
+        flag = false;
+        alert("新邮箱不能为空");
+    }
+    return flag;
 }

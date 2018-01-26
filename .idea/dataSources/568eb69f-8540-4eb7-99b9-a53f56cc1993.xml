@@ -98,7 +98,7 @@
     </column>
     <column id="29" parent="12" name="pet_description">
       <Position>3</Position>
-      <DataType>varchar(150)|0</DataType>
+      <DataType>varchar(1000)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="30" parent="12" name="pet_height">
@@ -131,54 +131,59 @@
       <DataType>decimal(10,2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="36" parent="12" name="PRIMARY">
+    <column id="36" parent="12" name="pet_variety">
+      <Position>10</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="37" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>pet_id
 pet_name</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="37" parent="13" name="user_id">
+    <column id="38" parent="13" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="38" parent="13" name="user_name">
+    <column id="39" parent="13" name="user_name">
       <Position>2</Position>
       <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="39" parent="13" name="user_password">
+    <column id="40" parent="13" name="user_password">
       <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="40" parent="13" name="user_sex">
+    <column id="41" parent="13" name="user_sex">
       <Position>4</Position>
       <DataType>varchar(5)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="41" parent="13" name="user_phone">
+    <column id="42" parent="13" name="user_phone">
       <Position>5</Position>
       <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="42" parent="13" name="user_email">
+    <column id="43" parent="13" name="user_email">
       <Position>6</Position>
       <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="43" parent="13" name="user_createtime">
+    <column id="44" parent="13" name="user_createtime">
       <Position>7</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="44" parent="13" name="user_address">
+    <column id="45" parent="13" name="user_address">
       <Position>8</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="45" parent="13" name="PRIMARY">
+    <key id="46" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id</ColNames>
       <Primary>1</Primary>

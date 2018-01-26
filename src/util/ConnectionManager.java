@@ -1,8 +1,6 @@
 package util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by 10096 on 2018/1/21.
@@ -28,9 +26,30 @@ public class ConnectionManager {
                 con.close();
             }
         }
-        catch (Exception e){
+        catch (SQLException e){
             e.printStackTrace();
         }
     }
-
+    public static void closeResultSet(ResultSet res){
+        try {
+            if (res != null){
+                res.close();
+                res = null;
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static void closeStatement(PreparedStatement pStatement){
+        try{
+            if(pStatement != null){
+                pStatement.close();
+                pStatement = null;
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

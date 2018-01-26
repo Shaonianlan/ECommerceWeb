@@ -8,51 +8,46 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="mode.Customer" %>
 <%@ page import="util.ConnectionManager" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.*" %>
 <%@ page import="java.util.regex.Pattern" %>
 <html>
 <head>
     <title>修改邮箱</title>
+    <script src="Check.js?ver=1"></script>
 </head>
     <body>
-    <form action="">
+    <form action="" name="form_newemail">
         新邮箱：
         <input type="text" name="new_email" value=""><br>
-        <input type="submit" value="修改">
+        <input type="submit" value="修改" onclick="return check_newemail();">
     </form>
     <a href="Alter_userinfo.jsp">返回</a>
     <%
         request.setCharacterEncoding("UTF-8");
         String new_email = request.getParameter("new_email");
-        //out.print(new_phonenum);
-        //String reg = "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$";
-        boolean flag = true;
-        //flag = Pattern.matches(reg,new_email);
         if(new_email != null) {
-            if(flag) {
-                Customer Log_user = (Customer) session.getAttribute("user");
-                String username = Log_user.getUser_name();
-                //连接数据库
-                try {
-                    Connection con = ConnectionManager.getConnection();
-                    String sql = "UPDATE user_info SET user_email = ? where user_name=?";
-                    PreparedStatement pstmt = con.prepareStatement(sql);
-                    pstmt.setString(1, new_email);
-                    pstmt.setString(2, username);
-                    pstmt.executeUpdate();
-                    //关闭连接
-                    pstmt.close();
-                    con.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                response.sendRedirect("Alter_userinfo.jsp");
+            Customer Log_user = (Customer) session.getAttribute("user");
+            String username = Log_user.getUser_name();
+            //连接数据库
+            Connection con = null;
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+            try {
+                con = ConnectionManager.getConnection();
+                String sql = "UPDATE user_info SET user_email = ? where user_name=?";
+                pstmt = con.prepareStatement(sql);
+                pstmt.setString(1, new_email);
+                pstmt.setString(2, username);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            else {
-                out.print("<script type='text/javascript'>alert('邮箱格式不正确');</script>");
+            finally {
+                ConnectionManager.closeConnection(con);
+                ConnectionManager.closeResultSet(rs);
+                ConnectionManager.closeStatement(pstmt);
             }
+            response.sendRedirect("Alter_userinfo.jsp");
         }
     %>
     </body>

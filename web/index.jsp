@@ -13,7 +13,7 @@
   <head>
     <title>登陆</title>
     <link type="text/css" rel="stylesheet" href="style.css">
-    <script src="form_log.js?ver=1"></script>
+    <script src="Check.js?ver=1"></script>
   </head>
   <body>
   <h2>欢迎登陆</h2>
@@ -26,7 +26,7 @@
             密码：
             <input type="password" name="password" id="password" value=""><span class="warning" id="showpasssword"></span><br>
         </p>
-        <input type="submit" value="确认"  onclick="return check();" >
+        <input type="submit" value="确认"  onclick="return check_log();" >
     </form>
     <a href='Register.jsp'>注册</a>
 
@@ -34,29 +34,39 @@
       request.setCharacterEncoding("UTF-8");
       String user_name = request.getParameter("username");
       String userpassword = request.getParameter("password");
-      if(user_name != null) {
-          Connection con = ConnectionManager.getConnection();
-          String sql = "SELECT user_name,user_password from user_info where user_name=?";
-          PreparedStatement pstmt = con.prepareStatement(sql);
-          pstmt.setString(1, user_name);
-          ResultSet rs = pstmt.executeQuery();
-          if (rs.next()) {
-              if (userpassword.equals(rs.getString("user_password"))) {
-                  Customer Log_user = CustomerDAO.getLoginInfo(user_name);
-                  session.setAttribute("user",Log_user);
-                  response.sendRedirect("home.jsp");
-              }
-              else {
-                  out.print("<script type='text/javascript'>alert('密码错误');</script>");
+      Connection con = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
+
+      if (user_name != null) {
+          try {
+              con = ConnectionManager.getConnection();
+              String sql = "SELECT user_name,user_password from user_info where user_name=?";
+              pstmt = con.prepareStatement(sql);
+              pstmt.setString(1, user_name);
+              rs = pstmt.executeQuery();
+              if (rs.next()) {
+                  if (userpassword.equals(rs.getString("user_password"))) {
+                      Customer Log_user = CustomerDAO.getLoginInfo(user_name);
+                      session.setAttribute("user", Log_user);
+                      response.sendRedirect("home.jsp");
+                  } else {
+                      out.print("<script type='text/javascript'>alert('密码错误');</script>");
+                  }
+              } else {
+                  out.print("<script type='text/javascript'>alert('用户名不存在');</script>");
               }
           }
-          else {
-              out.print("<script type='text/javascript'>alert('用户名不存在');</script>");
+          catch (SQLException e){
+              e.printStackTrace();
           }
-          pstmt.close();
-          con.close();
-          rs.close();
+          finally {
+              ConnectionManager.closeConnection(con);
+              ConnectionManager.closeResultSet(rs);
+              ConnectionManager.closeStatement(pstmt);
+          }
       }
+
   %>
   </body>
 </html>

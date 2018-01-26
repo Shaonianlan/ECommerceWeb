@@ -10,7 +10,7 @@
 <head>
     <title>注册</title>
     <link type="text/css" rel="stylesheet" href="style.css">
-    <script src="form_Reg.js?ver=1"></script>
+    <script src="Check.js?ver=1"></script>
 </head>
     <body>
     <h2>注册新用户</h2>
@@ -45,7 +45,7 @@
                 常住地址：<br>
                 <textarea name="address" id="address" cols="40" rows="5"></textarea>"<span class="warning" id="showaddress"></span>
             </p>
-            <input type="submit" value="注册"  onclick="return check_Reg();" >
+            <input type="submit" value="注册"  onclick="return check_reg();" >
         </form>
         <a href="index.jsp">返回</a>
     </body>

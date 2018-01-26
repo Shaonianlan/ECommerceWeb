@@ -1,6 +1,6 @@
 package mode;
 
-public class Pet {
+public class Pet{
   private Long pet_id;
   private String pet_name;
   private String pet_description;
@@ -10,6 +10,7 @@ public class Pet {
   private String pet_stock;
   private String pet_image;
   private Double pet_price;
+  private String pet_variety;
 
   public Long getPet_id() {
     return pet_id;
@@ -81,5 +82,13 @@ public class Pet {
 
   public void setPet_price(Double pet_price) {
     this.pet_price = pet_price;
+  }
+
+  public String getPet_variety() {
+    return pet_variety;
+  }
+
+  public void setPet_variety(String pet_variety) {
+    this.pet_variety = pet_variety;
   }
 }

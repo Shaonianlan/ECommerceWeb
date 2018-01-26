@@ -31,13 +31,16 @@
             Customer Log_user = (Customer) session.getAttribute("user");
             String username = Log_user.getUser_name();
             //连接数据库
+            Connection con = null;
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
             try {
-                Connection con = ConnectionManager.getConnection();
+                con = ConnectionManager.getConnection();
                 String sql = "SELECT user_password from user_info where user_name = ? and user_password = ?";
-                PreparedStatement pstmt = con.prepareStatement(sql);
+                pstmt = con.prepareStatement(sql);
                 pstmt.setString(1, username);
                 pstmt.setString(2,old_password);
-                ResultSet rs = pstmt.executeQuery();
+                rs = pstmt.executeQuery();
                 if(rs.next()) {
                     sql = "UPDATE user_info SET user_password = ? where user_name=?";
                     PreparedStatement pstmt2 = con.prepareStatement(sql);
@@ -50,12 +53,13 @@
                 else{
                     out.print("<script type='text/javascript'>alert('原密码错误');</script>");
                 }
-                //关闭连接
-                rs.close();
-                pstmt.close();
-                con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
+            }
+            finally {
+                ConnectionManager.closeConnection(con);
+                ConnectionManager.closeResultSet(rs);
+                ConnectionManager.closeStatement(pstmt);
             }
 
         }
