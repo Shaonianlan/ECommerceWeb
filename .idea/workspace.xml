@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="334ff5a4-38ff-425e-bcf9-16c0b154d166" name="Default" comment="主页">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ECommerceWeb/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../ECommerceWeb/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="334ff5a4-38ff-425e-bcf9-16c0b154d166" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/../ECommerceWeb/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -920,7 +918,7 @@
       <workItem from="1516779954668" duration="596000" />
       <workItem from="1516856870018" duration="723000" />
       <workItem from="1516868613957" duration="1198000" />
-      <workItem from="1516935996412" duration="12717000" />
+      <workItem from="1516935996412" duration="12723000" />
     </task>
     <task id="LOCAL-00001" summary="电子商务网站">
       <created>1516516581342</created>
@@ -978,11 +976,18 @@
       <option name="project" value="LOCAL" />
       <updated>1516952940032</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="主页">
+      <created>1516953077921</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1516953077921</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91910000" />
+    <option name="totallyTimeSpent" value="91916000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="149" y="110" width="1701" height="1068" extended-state="0" />
