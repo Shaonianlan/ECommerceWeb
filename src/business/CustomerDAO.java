@@ -7,32 +7,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by 10096 on 2018/1/21.
  */
 public class CustomerDAO {
-    public static String getHello(){
-        Date date =new Date();
-        SimpleDateFormat sdf =new SimpleDateFormat("HH");
-        int time=Integer.parseInt(sdf.format(date));
-        String show;
-        if(time >= 6 && time < 11){
-            show = "上午好";
-        }
-        else if(time >= 11 && time < 13){
-            show = "中午好";
-        }
-        else if (time >= 13 && time < 18){
-            show = "下午好";
-        }
-        else{
-            show = "晚上好";
-        }
-        return show;
-    }
     public static Customer getLoginInfo(String username){
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -63,5 +42,9 @@ public class CustomerDAO {
             e.printStackTrace();
         }
         return customer;
+    }
+
+    public static void DoRegister(){
+
     }
 }

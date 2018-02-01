@@ -16,8 +16,8 @@
       <Visible>1</Visible>
     </schema>
     <table id="10" parent="2" name="stu"/>
-    <table id="11" parent="9" name="order"/>
-    <table id="12" parent="9" name="order_detail"/>
+    <table id="11" parent="9" name="order_detail"/>
+    <table id="12" parent="9" name="orders"/>
     <table id="13" parent="9" name="pet_info"/>
     <table id="14" parent="9" name="user_info"/>
     <column id="15" parent="10" name="stu_name">
@@ -45,81 +45,81 @@
       <ColNames>stu_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="20" parent="11" name="order_id">
+    <column id="20" parent="11" name="detail_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="21" parent="11" name="user_name">
+    <column id="21" parent="11" name="order_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="11" name="pet_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="11" name="pet_name">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="11" name="quantity">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="11" name="pet_price">
+      <Position>6</Position>
+      <DataType>decimal(10,2)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="26" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>detail_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="27" parent="12" name="order_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="12" name="user_name">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="22" parent="11" name="user_address">
+    <column id="29" parent="12" name="user_address">
       <Position>3</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="11" name="user_phone">
+    <column id="30" parent="12" name="user_phone">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="24" parent="11" name="order_time">
+    <column id="31" parent="12" name="order_time">
       <Position>5</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="25" parent="11" name="order_price">
+    <column id="32" parent="12" name="order_price">
       <Position>6</Position>
       <DataType>decimal(10,2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="26" parent="11" name="order_status">
+    <column id="33" parent="12" name="order_status">
       <Position>7</Position>
-      <DataType>varchar(45)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="27" parent="11" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>order_id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="28" parent="12" name="detail_id">
-      <Position>1</Position>
       <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="29" parent="12" name="order_id">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="30" parent="12" name="pet_id">
-      <Position>3</Position>
-      <DataType>varchar(45)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="31" parent="12" name="pet_name">
-      <Position>4</Position>
-      <DataType>varchar(45)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="32" parent="12" name="quantity">
-      <Position>5</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="33" parent="12" name="pet_price">
-      <Position>6</Position>
-      <DataType>decimal(10,2)|0</DataType>
       <NotNull>1</NotNull>
     </column>
     <key id="34" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>detail_id</ColNames>
+      <ColNames>order_id</ColNames>
       <Primary>1</Primary>
     </key>
     <column id="35" parent="13" name="pet_id">

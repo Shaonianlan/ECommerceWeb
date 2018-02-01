@@ -14,6 +14,7 @@
 <%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.Set" %>
+<%@ page import="mode.Orders" %>
 <html>
 <head>
     <title>确认订单</title>
@@ -57,6 +58,8 @@
             price = pet.getPet_price();
             subtotal = quantity * price;
             total += subtotal;
+            Orders order = new Orders();
+            order.setOrder_price(total);
     %>
                 <tr>
                     <td><%=pet.getPet_name()%></td>
@@ -72,9 +75,6 @@
                     <td colspan='5' align='right'>总计：<%=total%></td>
                 </tr>
             </table>
-    <%
-        }
-    %>
             <div>确认卖家信息</div>
             <table>
                 <tr>
@@ -99,5 +99,8 @@
                 </tr>
             </table>
         </form>
+    <%
+        }
+    %>
     </body>
 </html>

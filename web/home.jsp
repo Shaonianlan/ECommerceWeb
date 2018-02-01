@@ -6,14 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="business.CustomerDAO" %>
 <%@ page import="business.PetDAO" %>
 <%@ page import="mode.Customer" %>
 <%@ page import="mode.Pet" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <html>
 <head>
     <title>Happy Pet</title>
@@ -21,6 +18,24 @@
     <body>
         <%
             Customer Log_user = (Customer) session.getAttribute("user");
+
+            Date date =new Date();
+            SimpleDateFormat sdf =new SimpleDateFormat("HH");
+            int time=Integer.parseInt(sdf.format(date));
+            String show;
+            if(time >= 6 && time < 11){
+                show = "上午好";
+            }
+            else if(time >= 11 && time < 13){
+                show = "中午好";
+            }
+            else if (time >= 13 && time < 18){
+                show = "下午好";
+            }
+            else{
+                show = "晚上好";
+            }
+
             Map cart = (Map)session.getAttribute("cart");
             if (cart == null){
                 cart = new HashMap();
@@ -34,7 +49,7 @@
             }
             else {
         %>
-            <%=Log_user.getUser_name()%>, <%=CustomerDAO.getHello()%>
+            <%=Log_user.getUser_name()%>, <%=show%>
             <a href='Logout.jsp'>注销</a><br>
             <a href='Alter_userinfo.jsp'>修改个人信息</a><br>
             <a href='Shopping_cart.jsp' target="_blank">购物车</a><br>
