@@ -1,6 +1,6 @@
 package mode;
 
-public class Pet{
+public class Pet {
   private Long pet_id;
   private String pet_name;
   private String pet_description;
@@ -10,7 +10,9 @@ public class Pet{
   private String pet_stock;
   private String pet_image;
   private Double pet_price;
-  private String pet_variety;
+  private String pet_character;
+  private String pet_suitable;
+  private String pet_life;
 
   public Long getPet_id() {
     return pet_id;
@@ -84,11 +86,27 @@ public class Pet{
     this.pet_price = pet_price;
   }
 
-  public String getPet_variety() {
-    return pet_variety;
+  public String getPet_character() {
+    return pet_character;
   }
 
-  public void setPet_variety(String pet_variety) {
-    this.pet_variety = pet_variety;
+  public void setPet_character(String pet_character) {
+    this.pet_character = pet_character;
+  }
+
+  public String getPet_suitable() {
+    return pet_suitable;
+  }
+
+  public void setPet_suitable(String pet_suitable) {
+    this.pet_suitable = pet_suitable;
+  }
+
+  public String getPet_life() {
+    return pet_life;
+  }
+
+  public void setPet_life(String pet_life) {
+    this.pet_life = pet_life;
   }
 }
