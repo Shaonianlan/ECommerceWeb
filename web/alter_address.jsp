@@ -12,6 +12,7 @@
 <html>
 <head>
     <title>修改收货地址</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
     <body>
     <form action="">

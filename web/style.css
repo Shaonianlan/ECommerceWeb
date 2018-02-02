@@ -1,2 +1,10 @@
 .warning{font-family: 宋体; font-size: 10px; color:red;}
-.formposition{}
+.dl{margin:20px 20px 0 20px; float:left; border:1px solid gray;}
+.dt{width:180px; margin:10px; height:120px; text-align: center;}
+.dd{width:180px; margin:auto; height:30px; line-height:30px;text-align: center;}
+.home_p{font-size: 16px; color: black; font-family:宋体;}
+.home_div{margin-bottom: 100px;}
+.home_div2{float: left;}
+body{ font-size:16px; line-height:1.8; width:1400px; margin:auto; }
+*{ margin:0; padding:0;}
+

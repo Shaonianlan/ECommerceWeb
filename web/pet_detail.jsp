@@ -11,6 +11,7 @@
 <html>
 <head>
     <title>宠物详情</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
     <body>
         <%

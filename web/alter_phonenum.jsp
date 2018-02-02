@@ -13,6 +13,7 @@
 <head>
     <title>修改手机号</title>
     <script src="Check.js?ver=1"></script>
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
     <body>
     <form action="" name = "form_newphone">

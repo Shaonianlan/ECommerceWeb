@@ -15,6 +15,7 @@
 <html>
 <head>
     <title>购物车</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
     <body>
         <%

@@ -12,6 +12,7 @@
 <html>
 <head>
     <title>修改密码</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
     <body>
     <h4>*修改成功后需要重新登陆</h4>

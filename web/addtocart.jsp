@@ -14,6 +14,7 @@
 <html>
 <head>
     <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
     <body>
         <%

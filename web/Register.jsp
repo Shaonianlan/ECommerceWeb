@@ -10,7 +10,7 @@
 <head>
     <title>注册</title>
     <link type="text/css" rel="stylesheet" href="style.css">
-    <script src="Check.js?ver=1"></script>
+    <script src="Check.js?  ver=1"></script>
 </head>
     <body>
     <h2>注册新用户</h2>

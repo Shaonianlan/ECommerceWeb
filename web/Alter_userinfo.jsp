@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>修改个人信息</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
 </head>
     <body>
         <%
