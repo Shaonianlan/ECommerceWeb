@@ -21,14 +21,18 @@ public class OrderDAO {
         ResultSet rs =null;
         try {
             con = ConnectionManager.getConnection();
-            String sql = "insert into orders(user_name,user_address,user_phone,order_time,order_price)" +
-                    "values(?,?,?,?,?)";
+            String sql = "insert into orders(user_name,user_address,user_phone,order_time,order_price,order_status)" +
+                    "values(?,?,?,?,?,?)";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, order.getUser_name());
             pstmt.setString(2,order.getUser_address());
             pstmt.setString(3,order.getUser_phone());
             pstmt.setString(4,order.getOrder_time());
             pstmt.setDouble(5,order.getOrder_price());
+            pstmt.setLong(6,order.getOrder_status());
+            pstmt.executeUpdate();
+            sql = "SELECT * from orders";
+            pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
             rs.next();
             int orderid = rs.getInt(1);
@@ -46,7 +50,7 @@ public class OrderDAO {
                 pstmt.setString(3,ods.getPet_name());
                 pstmt.setLong(4,ods.getQuantity());
                 pstmt.setDouble(5,ods.getPet_price());
-                pstmt.executeQuery();
+                pstmt.executeUpdate();
             }
         } catch(SQLException e) {
             e.printStackTrace();

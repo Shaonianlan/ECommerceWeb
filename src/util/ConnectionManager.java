@@ -10,7 +10,7 @@ public class ConnectionManager {
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/ecweb" ;
+            String url = "jdbc:mysql://localhost:3306/ecweb?useSSL=false" ;
             String username = "root" ;
             String password = "5jiu2DNF" ;
             con = DriverManager.getConnection(url,username,password);
