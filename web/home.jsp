@@ -17,26 +17,9 @@
     <link type="text/css" rel="stylesheet" href="style.css">
 </head>
     <body>
+    <div class="total_div">
         <%
             Customer Log_user = (Customer) session.getAttribute("user");
-
-            Date date =new Date();
-            SimpleDateFormat sdf =new SimpleDateFormat("HH");
-            int time=Integer.parseInt(sdf.format(date));
-            String show;
-            if(time >= 6 && time < 11){
-                show = "上午好";
-            }
-            else if(time >= 11 && time < 13){
-                show = "中午好";
-            }
-            else if (time >= 13 && time < 18){
-                show = "下午好";
-            }
-            else{
-                show = "晚上好";
-            }
-
             Map cart = (Map)session.getAttribute("cart");
             if (cart == null){
                 cart = new HashMap();
@@ -44,32 +27,49 @@
             }
             int cartitemsnum = cart.size();
             if(Log_user == null){
-                out.print("<a href='index.jsp'>登陆</a><br>");
-                out.print("<a href='Shopping_cart.jsp' target='_blank'>购物车</a><br>");
-                out.print("<p class='home_p'>所有宠物</p>");
+        %>
+            <div class="home_head">
+                <span class="left_float">Welcome to Happy Pet！</span>
+                <a href='Shopping_cart.jsp' target='_blank'class='home_a'>购物车</a>
+                <a href='index.jsp'class='home_a'>登陆</a><br>
+            </div>
+        <%
             }
             else {
         %>
-            <%=Log_user.getUser_name()%>, <%=show%>
-            <a href='Logout.jsp'>注销</a><br>
-            <a href='Alter_userinfo.jsp'>修改个人信息</a><br>
-            <a href='Shopping_cart.jsp' target="_blank">购物车</a><br>
-            <span>您的购物车里共有 <%=cartitemsnum%> 种宠物</span><br><br>
-            <p class="home_p">所有宠物</p>
+            <div class="home_head">
+                <span class="left_float">Welcome to Happy Pet！</span>
+                <span class="home_a">您的购物车里共有 <%=cartitemsnum%> 种宠物</span>
+                <a href='Shopping_cart.jsp' target="_blank" class="home_a">购物车</a>
+                <a href='Logout.jsp' class="home_a">注销</a>
+                <a href='Alter_userinfo.jsp' class="home_a" ><%=Log_user.getUser_name()%></a><br>
+            </div>
         <%
             }
+        %>
+            <div class="home_div4">所有宠物</div>
+            <div class="home_div3">
+                <span>小型犬</span>
+                <span>中型犬</span>
+                <span>大型犬</span>
+            </div>
+        <%
             List<Pet> petlist = new ArrayList<Pet>();
             petlist = PetDAO.getPet();
-            out.print("<div class='home_div'>");
+            out.print("<div class='home_div2'>");
             for (int i = 0; i < petlist.size(); i++){
         %>
-                <dl class="dl">
-                    <dt class="dt"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" ><img src=<%=petlist.get(i).getPet_image()%> width="160px" height="120px"></a> </dt>
-                    <dd class="dd"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" ><%=petlist.get(i).getPet_name()%></a> </dd>
+                <dl class="home_dl">
+                    <dt class="home_dt"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" ><img src=<%=petlist.get(i).getPet_image()%> width="160px" height="120px"></a> </dt>
+                    <dd class="home_dd"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" ><%=petlist.get(i).getPet_name()%></a> </dd>
                 </dl>
         <%
             }
         %>
-            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="height"></div>
+        <div>
+    </div>
     </body>
 </html>

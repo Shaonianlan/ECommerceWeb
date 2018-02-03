@@ -20,6 +20,7 @@
     <title>确认订单</title>
 </head>
     <body>
+    <div class="total_div">
     <%
         double total = 0;
         Customer Log_user = (Customer) session.getAttribute("user");
@@ -102,5 +103,6 @@
     <%
         }
     %>
+    </div>
     </body>
 </html>

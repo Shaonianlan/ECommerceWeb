@@ -1,10 +1,135 @@
-.warning{font-family: 宋体; font-size: 10px; color:red;}
-.dl{margin:20px 20px 0 20px; float:left; border:1px solid gray;}
-.dt{width:180px; margin:10px; height:120px; text-align: center;}
-.dd{width:180px; margin:auto; height:30px; line-height:30px;text-align: center;}
-.home_p{font-size: 16px; color: black; font-family:宋体;}
-.home_div{margin-bottom: 100px;}
-.home_div2{float: left;}
-body{ font-size:16px; line-height:1.8; width:1400px; margin:auto; }
-*{ margin:0; padding:0;}
+/*登陆*/
+.index_div {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+.index_form {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.index_h2 {
+    margin-bottom: 30px;
+}
+.form_input {
+    font-size: 16px;
+    padding: 8px;
+}
+.form_div2{
+    margin-bottom: 20px;
+}
+.form_button{
+    border: none;
+    color: white;
+    font-family:Arial;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 20px 0 0;
+    cursor: pointer;
+}
+
+/*注册*/
+.Register_input {
+    font-size: 15px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+.Register_div{
+    margin: 0px auto 5px 0px;
+}
+.Register_h5{
+    margin-bottom: 15px;
+}
+.Register_textarea{
+    font-size: 15px;
+    padding: 8px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+
+/*主页*/
+.home_dl{
+    margin:20px 20px 0 20px;
+    float:left;
+    border:1px solid rgba(0, 0, 0, 0.1);
+}
+.home_dt{
+    width:180px;
+    margin:10px;
+    height:120px;
+    text-align: center;
+}
+.home_dd{
+    width:180px;
+    margin:auto;
+    height:30px;
+    line-height:30px;
+    text-align: center;
+}
+.home_div4{
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    font-family:宋体;
+    text-align: center;
+}
+.home_div2{
+    width: 1300px;
+    margin: auto;
+}
+.home_div3{
+    text-align: center
+}
+.home_a{
+    float: right;
+    margin: 0 10px
+}
+.home_head{
+    background-color: whitesmoke;
+}
+
+/*宠物详情*/
+.pet_div1{
+    width: 1400px;
+    margin: auto;
+}
+
+/*通用*/
+.left_float{
+    float: left;
+    margin-left: 10px;
+}
+.clear{
+    clear: both;
+}
+.height{
+    height: 50px;
+}
+.height2{
+    height: 10px;
+}
+.total_div{
+
+}
+.warning{
+    font-family: 宋体;
+    font-size: 9px;
+    color:red;
+}
+
+body{
+    font-size:16px;
+    line-height:1.8;
+    margin:auto;
+}
+*{
+    margin:0;
+    padding:0;
+}
 

@@ -13,6 +13,7 @@
     <link type="text/css" rel="stylesheet" href="style.css">
 </head>
     <body>
+    <div class="total_div">
         <%
             Customer Log_user = (Customer)session.getAttribute("user");
             Log_user = CustomerDAO.getLoginInfo(Log_user.getUser_name());
@@ -24,5 +25,6 @@
         %>
         <a href="alter_password.jsp">修改密码</a><br>
         <a href="home.jsp">返回</a>
+    </div>
     </body>
 </html>

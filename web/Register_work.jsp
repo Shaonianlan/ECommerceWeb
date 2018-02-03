@@ -13,6 +13,7 @@
     <title>REGISTER</title>
 </head>
     <body>
+    <div class="total_div">
         <%
             request.setCharacterEncoding("UTF-8");
             String user_name = request.getParameter("username");
@@ -61,5 +62,6 @@
                 ConnectionManager.closeStatement(pstmt);
             }
         %>
+    </div>
     </body>
 </html>

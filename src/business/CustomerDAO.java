@@ -43,8 +43,4 @@ public class CustomerDAO {
         }
         return customer;
     }
-
-    public static void DoRegister(){
-
-    }
 }

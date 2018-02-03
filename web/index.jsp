@@ -13,22 +13,19 @@
   <head>
     <title>登陆</title>
     <link type="text/css" rel="stylesheet" href="style.css">
-    <script src="Check.js?ver=1"></script>
   </head>
   <body>
-  <h2>欢迎登陆</h2>
-    <form action="" method="post" name="form_log" onsubmit="return check();" >
-        <p>
-            用户名：
-            <input type="text" name = "username" id="username" value=""><span class="warning" id="showname"></span><br>
-        </p>
-        <p>
-            密码：
-            <input type="password" name="password" id="password" value=""><span class="warning" id="showpasssword"></span><br>
-        </p>
-        <input type="submit" value="确认"  onclick="return check_log();" >
+  <div class="index_div">
+    <form action="" method="post" name="form_log" class="index_form" >
+        <h2 class="index_h2">Please Login</h2>
+        <div class="form_div2">
+        <input type="text" name = "username" placeholder="Username" class="form_input" required="required" autofocus=""/>
+        <input type="password" name="password" placeholder="Password" class="form_input" required="required"/>
+        </div>
+        <input type="submit" value="登陆" class="form_button">
+        <a href='Register.jsp'>注册</a>
     </form>
-    <a href='Register.jsp'>注册</a>
+
 
   <%
       request.setCharacterEncoding("UTF-8");
@@ -68,5 +65,6 @@
       }
 
   %>
+  </div>
   </body>
 </html>
