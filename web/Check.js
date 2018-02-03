@@ -47,7 +47,7 @@ function check_reg(){
 function check_newphone() {
     var flag = false;
     var new_phonenum = document.form_newphone.new_phonenum.value;
-    if(new_phonenum != null){
+    if(new_phonenum != ""){
         var myreg = /^1[34578]\d{9}$/;
         if(myreg.test(new_phonenum)){
             flag = true;
@@ -67,7 +67,7 @@ function check_newphone() {
 function check_newemail() {
     var flag = false;
     var new_email = document.form_newemail.new_email.value;
-    if(new_email != null){
+    if(new_email != ""){
         var myregex = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
         if(myregex.test(new_email)){
             flag = true;

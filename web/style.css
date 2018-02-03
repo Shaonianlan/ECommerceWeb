@@ -1,13 +1,13 @@
 /*登陆*/
 .index_div {
-    margin-top: 80px;
+    margin-top: 200px;
     margin-bottom: 80px;
 }
 .index_form {
-    max-width: 380px;
+    max-width: 350px;
     padding: 15px 35px 45px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .index_h2 {
@@ -26,14 +26,23 @@
     font-family:Arial;
     padding: 10px 24px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     font-size: 18px;
     margin: 4px 20px 0 0;
     cursor: pointer;
 }
+.index_a{
+    margin: 0 15px 0 0;
+}
 
 /*注册*/
+.Register_form {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
 .Register_input {
     font-size: 15px;
     padding: 8px;
@@ -121,6 +130,10 @@
     font-family: 宋体;
     font-size: 9px;
     color:red;
+}
+
+a{
+    text-decoration: none;
 }
 
 body{

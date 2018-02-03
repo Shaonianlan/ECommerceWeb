@@ -23,7 +23,8 @@
         <input type="password" name="password" placeholder="Password" class="form_input" required="required"/>
         </div>
         <input type="submit" value="登陆" class="form_button">
-        <a href='Register.jsp'>注册</a>
+        <a href='Register.jsp' class="index_a">注册</a>
+        <a href="home.jsp">游客访问</a>
     </form>
 
 

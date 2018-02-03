@@ -14,7 +14,7 @@
 </head>
     <body>
     <div class="index_div">
-        <form action="Register_work.jsp" method="post" name="form_Reg" class="index_form">
+        <form action="Register_work.jsp" method="post" name="form_Reg" class="Register_form">
             <div>
                 <h2 class="index_h2">Register</h2>
                 <h5 class="Register_h5">请输入正确的手机号码和邮箱</h5>

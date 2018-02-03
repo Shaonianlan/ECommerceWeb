@@ -58,9 +58,10 @@
             petlist = PetDAO.getPet();
             out.print("<div class='home_div2'>");
             for (int i = 0; i < petlist.size(); i++){
+                //图片后加随机数，让浏览器以为每次请求不同
         %>
                 <dl class="home_dl">
-                    <dt class="home_dt"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" ><img src=<%=petlist.get(i).getPet_image()%> width="160px" height="120px"></a> </dt>
+                    <dt class="home_dt"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" ><img src=<%=petlist.get(i).getPet_image()+"?t="+Math.random()%> width="160px" height="120px"></a> </dt>
                     <dd class="home_dd"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" ><%=petlist.get(i).getPet_name()%></a> </dd>
                 </dl>
         <%
