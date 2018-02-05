@@ -11,9 +11,10 @@
 <html>
 <head>
     <title>REGISTER</title>
+    <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
     <body>
-    <div class="total_div">
+    <div class="index_form">
         <%
             request.setCharacterEncoding("UTF-8");
             String user_name = request.getParameter("username");

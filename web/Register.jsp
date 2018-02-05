@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>注册</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
     <script src="Check.js?ver=1"></script>
 </head>
     <body>
@@ -19,8 +19,8 @@
                 <h2 class="index_h2">Register</h2>
                 <h5 class="Register_h5">请输入正确的手机号码和邮箱</h5>
                 <input type="text" name="username" id="username" placeholder="用户名" required="required" class="Register_input" autofocus="">
-                <input type="text" name="password" id="password" placeholder="密码" required="required" class="Register_input">
-                <input type="text" name="confirmpassword" id="confirmpassword" placeholder="确认密码" required="required" class="Register_input"><span class="warning" id="showpassswordd"></span>
+                <input type="password" name="password" id="password" placeholder="密码" required="required" class="Register_input">
+                <input type="password" name="confirmpassword" id="confirmpassword" placeholder="确认密码" required="required" class="Register_input"><span class="warning" id="showpassswordd"></span>
                 <div class="Register_div">
                 性别：
                 <input type="radio" name="sex" value="男" checked>男

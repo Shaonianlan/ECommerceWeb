@@ -13,7 +13,7 @@
 <html>
 <head>
     <title>宠物详情</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
     <body>
     <div class="total_div">
@@ -28,7 +28,7 @@
             if(Log_user == null){
         %>
         <div class="home_head">
-            <span class="left_float">欢迎来到Happy Pet！</span>
+            <span class="left_float">Welcome to Happy Pet！</span>
             <a href='Shopping_cart.jsp' target='_blank'class='home_a'>购物车</a>
             <a href='index.jsp'class='home_a'>登陆</a><br>
         </div>

@@ -12,18 +12,20 @@
 <html>
 <head>
     <title>修改密码</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
     <body>
-    <h4>*修改成功后需要重新登陆</h4>
-    <form action="">
-        原密码：
-        <input type="text" name="old_password" value=""><br>
-        新密码：
-        <input type="text" name="new_password" value=""><br>
-        <input type="submit" value="修改">
-    </form>
-    <a href="Alter_userinfo.jsp">返回</a>
+    <div class="index_form">
+        <h4>*修改成功后需要重新登陆</h4>
+        <form action="">
+            原密码：
+            <input type="text" name="old_password" required="required"><br>
+            新密码：
+            <input type="text" name="new_password" required="required"><br>
+            <input type="submit" value="修改" class="home_button">
+        </form>
+        <a href="Alter_userinfo.jsp">返回</a>
+    </div>
     <%
         request.setCharacterEncoding("UTF-8");
         String old_password = request.getParameter("old_password");

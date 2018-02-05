@@ -26,7 +26,6 @@
     font-family:Arial;
     padding: 10px 24px;
     text-align: center;
-    display: inline-block;
     font-size: 18px;
     margin: 4px 20px 0 0;
     cursor: pointer;
@@ -82,25 +81,88 @@
     text-align: center;
 }
 .home_div4{
-    font-size: 20px;
+    font-size: 25px;
     color: black;
     font-weight: bold;
     font-family:宋体;
-    text-align: center;
+    margin-left: 325px;
 }
 .home_div2{
     width: 1300px;
     margin: auto;
+    text-align: center;
 }
-.home_div3{
-    text-align: center
+.home_typediv{
+    float: left;
+    margin: 20px 0 0 150px;
 }
 .home_a{
     float: right;
-    margin: 0 10px
+    margin: 0 10px;
 }
 .home_head{
     background-color: whitesmoke;
+}
+
+.home_li {
+    font-size: 20px;
+    font-family: 微软雅黑;
+    font-weight: bold;
+    list-style-type:none;
+    margin-bottom: 10px;
+}
+.home_li2{
+    font-size: 14px;
+    font-family: 微软雅黑;
+    list-style-type:none;
+    margin-bottom: 5px;
+    text-align: left;
+}
+.home_div5{
+    float: right;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+.home_button{
+    border: none;
+    color: white;
+    font-family:Arial;
+    padding: 10px 24px;
+    text-align: center;
+    font-size: 12px;
+    margin: 4px 20px 0 0;
+    cursor: pointer;
+}
+
+/*搜索结果*/
+.search_div{
+    width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+.search_table{
+    width:100%;
+    border:1px solid rgba(0, 0, 0, 0.1);
+}
+
+.search_td{
+    width: 25%;
+}
+.search_li{
+    font-size: 16px;
+    font-family: 微软雅黑;
+    font-weight: normal;
+    list-style-type:none;
+    margin-bottom: 10px;
+}
+.search_em{
+    color: red;
+    font-size: 25px;
+}
+.search_div2{
+    background-color: aliceblue;
+    text-align: left;
 }
 
 /*宠物详情*/
@@ -135,7 +197,6 @@
 a{
     text-decoration: none;
 }
-
 body{
     font-size:16px;
     line-height:1.8;

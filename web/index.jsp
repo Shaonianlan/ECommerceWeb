@@ -12,7 +12,7 @@
 <html>
   <head>
     <title>登陆</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
   </head>
   <body>
   <div class="index_div">
@@ -32,39 +32,16 @@
       request.setCharacterEncoding("UTF-8");
       String user_name = request.getParameter("username");
       String userpassword = request.getParameter("password");
-      Connection con = null;
-      PreparedStatement pstmt = null;
-      ResultSet rs = null;
-
-      if (user_name != null) {
-          try {
-              con = ConnectionManager.getConnection();
-              String sql = "SELECT user_name,user_password from user_info where user_name=?";
-              pstmt = con.prepareStatement(sql);
-              pstmt.setString(1, user_name);
-              rs = pstmt.executeQuery();
-              if (rs.next()) {
-                  if (userpassword.equals(rs.getString("user_password"))) {
-                      Customer Log_user = CustomerDAO.getLoginInfo(user_name);
-                      session.setAttribute("user", Log_user);
-                      response.sendRedirect("home.jsp");
-                  } else {
-                      out.print("<script type='text/javascript'>alert('密码错误');</script>");
-                  }
-              } else {
-                  out.print("<script type='text/javascript'>alert('用户名不存在');</script>");
-              }
-          }
-          catch (SQLException e){
-              e.printStackTrace();
-          }
-          finally {
-              ConnectionManager.closeConnection(con);
-              ConnectionManager.closeResultSet(rs);
-              ConnectionManager.closeStatement(pstmt);
+      if( user_name != null && userpassword !=null) {
+          boolean check = CustomerDAO.check_log(user_name, userpassword);
+          if (check) {
+              Customer Log_user = CustomerDAO.getLoginInfo(user_name);
+              session.setAttribute("user", Log_user);
+              response.sendRedirect("home.jsp");
+          } else {
+              out.print("<script type='text/javascript'>alert('密码错误');</script>");
           }
       }
-
   %>
   </div>
   </body>

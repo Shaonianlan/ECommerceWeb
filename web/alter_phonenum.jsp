@@ -13,15 +13,17 @@
 <head>
     <title>修改手机号</title>
     <script src="Check.js?ver=1"></script>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
     <body>
-    <form action="" name = "form_newphone">
-        新手机号码：
-        <input type="text" name="new_phonenum" value=""><br>
-        <input type="submit" value="修改" onclick="return check_newphone();">
-    </form>
-    <a href="Alter_userinfo.jsp">返回</a>
+    <div class="index_form">
+        <form action="" name = "form_newphone">
+            新手机号码：
+            <input type="text" name="new_phonenum" required="required"><br>
+            <input type="submit" value="修改" onclick="return check_newphone();" class="home_button">
+        </form>
+        <a href="Alter_userinfo.jsp">返回</a>
+    </div>
     <%
         request.setCharacterEncoding("UTF-8");
         String new_phonenum = request.getParameter("new_phonenum");

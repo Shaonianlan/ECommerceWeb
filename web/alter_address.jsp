@@ -12,15 +12,17 @@
 <html>
 <head>
     <title>修改收货地址</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
     <body>
-    <form action="">
-        新收货地址：
-        <input type="text" name="new_address" value=""><br>
-        <input type="submit" value="修改">
-    </form>
-    <a href="Alter_userinfo.jsp">返回</a>
+    <div class="index_form">
+        <form action="">
+            新收货地址：
+            <input type="text" name="new_address" required="required"><br>
+            <input type="submit" value="修改" class="home_button">
+        </form>
+        <a href="Alter_userinfo.jsp">返回</a>
+    </div>
     <%
         request.setCharacterEncoding("UTF-8");
         String new_aadress = request.getParameter("new_address");

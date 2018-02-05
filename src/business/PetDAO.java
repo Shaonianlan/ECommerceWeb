@@ -89,4 +89,91 @@ public class PetDAO {
         }
         return pet;
     }
+
+    public static List<String> getpettype(){
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<String> pettype_list = new ArrayList<String>();
+        try{
+            con = ConnectionManager.getConnection();
+            String sql = "Select DISTINCT(pet_type) from pet_info";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                String s = rs.getString("pet_type");
+                pettype_list.add(s);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return pettype_list;
+    }
+
+    public static List<String> getpet_bytype(String pet_type){
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<String> petbytype = new ArrayList<String>();
+        try{
+            con = ConnectionManager.getConnection();
+            String sql = "Select pet_name from pet_info where pet_type = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,pet_type);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                String s = rs.getString("pet_name");
+                petbytype.add(s);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return petbytype;
+    }
+
+    public static List<Pet> search(String search_name){
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<Pet> searchpets = new ArrayList<Pet>();
+        try{
+            con = ConnectionManager.getConnection();
+            String sql = "Select pet_name,pet_life,pet_type,pet_sourcearea,pet_price,pet_image from pet_info where pet_name LIKE '%"+search_name+"%'";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()){
+                Pet pet = new Pet();
+
+                pet.setPet_name(rs.getString("pet_name"));
+                pet.setPet_life(rs.getString("pet_life"));
+                pet.setPet_type(rs.getString("pet_type"));
+                pet.setPet_sourcearea(rs.getString("pet_sourcearea"));
+                pet.setPet_price(rs.getDouble("pet_price"));
+                pet.setPet_image(rs.getString("pet_image"));
+
+                searchpets.add(pet);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return searchpets;
+    }
 }

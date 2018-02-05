@@ -15,9 +15,10 @@
 <html>
 <head>
     <title>购物车</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
     <body>
+        <div class="index_form">
         <%
             double total = 0;
             Customer Log_user = (Customer) session.getAttribute("user");
@@ -77,6 +78,7 @@
                 out.print("<a href='index.jsp'>需要登录后才能生成订单</a>");
             }
         %>
-    <a href="home.jsp">返回</a>
+        <a href="home.jsp">返回</a>
+        </div>
     </body>
 </html>

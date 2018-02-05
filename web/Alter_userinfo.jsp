@@ -10,10 +10,10 @@
 <html>
 <head>
     <title>修改个人信息</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
     <body>
-    <div class="total_div">
+    <div class="index_form">
         <%
             Customer Log_user = (Customer)session.getAttribute("user");
             Log_user = CustomerDAO.getLoginInfo(Log_user.getUser_name());

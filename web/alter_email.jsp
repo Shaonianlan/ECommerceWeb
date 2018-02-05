@@ -14,15 +14,17 @@
 <head>
     <title>修改邮箱</title>
     <script src="Check.js?ver=1"></script>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
     <body>
-    <form action="" name="form_newemail">
-        新邮箱：
-        <input type="text" name="new_email" value=""><br>
-        <input type="submit" value="修改" onclick="return check_newemail();">
-    </form>
-    <a href="Alter_userinfo.jsp">返回</a>
+    <div class="index_form">
+        <form action="" name="form_newemail">
+            新邮箱：
+            <input type="text" name="new_email" required="required" autofocus=""><br>
+            <input type="submit" value="修改" onclick="return check_newemail();" class="home_button">
+        </form>
+        <a href="Alter_userinfo.jsp">返回</a>
+    </div>
     <%
         request.setCharacterEncoding("UTF-8");
         String new_email = request.getParameter("new_email");
