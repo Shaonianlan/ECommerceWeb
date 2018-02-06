@@ -23,7 +23,7 @@
                 <input type="password" name="confirmpassword" id="confirmpassword" placeholder="确认密码" required="required" class="Register_input"><span class="warning" id="showpassswordd"></span>
                 <div class="Register_div">
                 性别：
-                <input type="radio" name="sex" value="男" checked>男
+                <input type="radio" name="sex" value="男" checked>男<span class="Register_input"></span>
                 <input type="radio" name="sex" value="女">女
                 </div>
                 <input type="text" name="phonenum" id="phonenum" placeholder="手机号" required="required" class="Register_input"><span class="warning" id="showphone"></span>

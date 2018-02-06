@@ -6,14 +6,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.sql.*" import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="util.ConnectionManager" %>
 <%@ page import="business.CustomerDAO" %>
 <html>
 <head>
     <title>REGISTER</title>
     <link type="text/css" rel="stylesheet" href="style/style.css">
     <meta http-equiv="refresh" content="3; url=index.jsp";>
+    <script language="javascript">
+        //防止页面后退
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, document.URL);
+        });
+    </script>
 </head>
     <body>
     <div class="index_form">

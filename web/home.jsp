@@ -47,15 +47,32 @@
         <%
             }
         %>
-        <div class="home_div4">所有宠物</div>
-            <div class="home_div5">
-                <form action="search_result.jsp" target="_blank">
-                    <input type="text" name="searchbox" placeholder="宠物的名字" required="required" class="form_input">
-                    <input type="submit" value="搜索" class="home_button">
-                </form>
-            </div>
-            <div class="home_typediv">
+        <div class="home_menu">
             <ul>
+                <li class="home_li3_first"><a href="" class="home_a2">首页</a></li>
+                <li class="home_li3"><a href="" class="home_a2">宠物资讯</a></li>
+                <li class="home_li3"><a href="" class="home_a2">宠物训练</a></li>
+                <li class="home_li3"><a href="" class="home_a2">血统查询</a></li>
+                <li class="home_li3"><a href="" class="home_a2">宠物用品</a></li>
+                <li class="home_li4"><a href="" class="home_a2">客服通</a></li>
+            </ul>
+        </div>
+        <div class="home_div4">所有宠物</div>
+        <div class="home_div">
+            <ul>
+                <li class="home_li5_first">人气排行</li>
+                <li class="home_li5">销量排行</li>
+                <li class="home_li5">价格排行</li>
+            </ul>
+        </div>
+        <div class="home_div5">
+            <form action="search_result.jsp" target="_blank">
+                <input type="text" name="searchbox" placeholder="宠物的名字" required="required" class="form_input">
+                <input type="submit" value="搜索" class="home_button">
+            </form>
+        </div>
+        <div class="home_typediv">
+        <ul>
         <%
             pettypelist = PetDAO.getpettype();
             Iterator<String> it = pettypelist.iterator();
@@ -83,8 +100,8 @@
                 //图片后加随机数，让浏览器以为每次请求不同(缓存)
         %>
                 <dl class="home_dl">
-                    <dt class="home_dt"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" ><img src=<%=petlist.get(i).getPet_image()+"?t="+Math.random()%> width="180px" height="120px"></a> </dt>
-                    <dd class="home_dd"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" ><%=petlist.get(i).getPet_name()%></a> </dd>
+                    <dt class="home_dt"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" target="_blank"><img src=<%=petlist.get(i).getPet_image()+"?t="+Math.random()%> width="180px" height="120px"></a> </dt>
+                    <dd class="home_dd"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" target="_blank"><%=petlist.get(i).getPet_name()%></a> </dd>
                 </dl>
         <%
             }

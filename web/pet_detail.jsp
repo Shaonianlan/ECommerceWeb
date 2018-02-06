@@ -37,7 +37,7 @@
         else {
         %>
         <div class="home_head">
-            <span class="left_float">欢迎来到Happy Pet！</span>
+            <span class="left_float">Welcome to Happy Pet！</span>
             <span class="home_a">您的购物车里共有 <%=cartitemsnum%> 种宠物</span>
             <a href='Shopping_cart.jsp' target="_blank" class="home_a">购物车</a>
             <a href='Logout.jsp' class="home_a">注销</a>
@@ -49,23 +49,46 @@
             Pet pet = PetDAO.getpetdetail(pet_name);
         %>
         <div class="pet_div1">
-            <h2><%=pet.getPet_name()%>介绍</h2>
-            <img src=<%=pet.getPet_image()%> width="640px" height="480px">
-            <p><%=pet.getPet_description()%></p><br>
-            <p>体型身高</p>
-            <p><%=pet.getPet_height()%></p><br>
-            <p>类型</p>
-            <p><%=pet.getPet_type()%></p><br>
-            <p>原产地</p>
-            <p><%=pet.getPet_sourcearea()%></p><br>
-            <p>性格</p>
-            <p><%=pet.getPet_character()%></p><br>
-            <p>适养人群</p>
-            <p><%=pet.getPet_suitable()%></p><br>
-            <p>参考价格</p>
-            <p><%=pet.getPet_price()%>RMB</p><br>
-            <a href="addtocart.jsp?pet_name=<%=pet_name%>">加入购物车</a><br>
-            <a href="home.jsp">返回</a><br><br><br>
+            <div class="pet_pic">
+                <img src=<%=pet.getPet_image()%> width="640px" height="480px">
+            </div>
+            <div class="pet_div2">
+                <h2 class="pet_h2"><%=pet.getPet_name()%></h2>
+                <div class="pet_div3">
+                    <h4>体型身高</h4>
+                    <div><%=pet.getPet_height()%></div>
+                </div>
+                <div class="pet_div3">
+                    <h4>类型</h4>
+                    <div><%=pet.getPet_type()%></div>
+                </div>
+                <div class="pet_div3">
+                    <h4>寿命</h4>
+                    <div><%=pet.getPet_life()%></div>
+                </div>
+                <div class="pet_div3">
+                    <h4>原产地</h4>
+                    <div><%=pet.getPet_sourcearea()%></div>
+                </div>
+                <div class="pet_div3">
+                    <h4>参考价格</h4>
+                    <div><%=pet.getPet_price()%>RMB</div>
+                </div>
+                <a href="addtocart.jsp?pet_name=<%=pet_name%>" class="pet_a">加入购物车</a>
+            </div>
+            <div class="clear"></div>
+            <div class="pet_div3_first">
+                <h4>概述</h4>
+                <div><%=pet.getPet_description()%></div>
+            </div>
+            <div class="pet_div3">
+                <h4>性格</h4>
+                <div><%=pet.getPet_character()%></div>
+            </div>
+            <div class="pet_div3">
+                <h4>适养人群</h4>
+                <div><%=pet.getPet_suitable()%></div>
+            </div>
         </div>
     </div>
     </body>
