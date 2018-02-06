@@ -8,10 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" import="java.sql.*" import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="util.ConnectionManager" %>
+<%@ page import="business.CustomerDAO" %>
 <html>
 <head>
     <title>REGISTER</title>
     <link type="text/css" rel="stylesheet" href="style/style.css">
+    <meta http-equiv="refresh" content="3; url=index.jsp";>
 </head>
     <body>
     <div class="index_form">
@@ -23,38 +25,11 @@
             String phonenum = request.getParameter("phonenum");
             String email = request.getParameter("email");
             String address = request.getParameter("address");
-
-            Connection con = null;
-            PreparedStatement pstmt = null;
-            ResultSet rs = null;
-            try {
-                con = ConnectionManager.getConnection();
-                String sql = "insert into user_info (user_name,user_password,user_sex,user_phone,user_email,user_address,user_createtime) VALUES " +
-                            "(?,?,?,?,?,?,?)";
-                pstmt = con.prepareStatement(sql);
-                pstmt.setString(1, user_name);
-                pstmt.setString(2, user_password);
-                pstmt.setString(3, sex);
-                pstmt.setString(4, phonenum);
-                pstmt.setString(5, email);
-                pstmt.setString(6, address);
-                Date dt = new Date();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                pstmt.setString(7, sdf.format(dt));
-                pstmt.executeUpdate();
-                out.print("恭喜你，注册成功");
-                out.print("<a href='index.jsp'>登陆</a>");
-
-            }
-            catch (SQLException e){
-                e.printStackTrace();
-            }
-            finally {
-                ConnectionManager.closeConnection(con);
-                ConnectionManager.closeResultSet(rs);
-                ConnectionManager.closeStatement(pstmt);
-            }
+            CustomerDAO.DoRegister(user_name,user_password,sex,phonenum,email,address);
         %>
+        <div>恭喜你</div>
+        <div>注册成功，3秒后自动跳转到登陆界面。</div>
+        <div>或者手动登陆<a href="index.jsp">  登陆</a></div>
     </div>
     </body>
 </html>

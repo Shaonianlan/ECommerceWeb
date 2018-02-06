@@ -7,11 +7,43 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by 10096 on 2018/1/21.
  */
 public class CustomerDAO {
+    public static void DoRegister(String name,String password,String sex,String phone,String email,String address){
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            con = ConnectionManager.getConnection();
+            String sql = "insert into user_info (user_name,user_password,user_sex,user_phone,user_email,user_address,user_createtime) VALUES " +
+                    "(?,?,?,?,?,?,?)";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, name);
+            pstmt.setString(2, password);
+            pstmt.setString(3, sex);
+            pstmt.setString(4, phone);
+            pstmt.setString(5, email);
+            pstmt.setString(6, address);
+            Date dt = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            pstmt.setString(7, sdf.format(dt));
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+    }
+
     public static Customer getLoginInfo(String username) {
         Connection con = null;
         PreparedStatement pstmt = null;
