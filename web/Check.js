@@ -1,6 +1,37 @@
 /**
  * Created by 10096 on 2018/1/19.
  */
+//ajax异步验证用户名是否存在
+var xmlhttp = new XMLHttpRequest();
+var username_flag = false;
+
+function check_username(){
+    var name = document.getElementById("username").value;
+    if(name != ""){
+        var url = "Register_work_checkname.jsp?username="+name+"&time="+new Date().getTime();
+        xmlhttp.open("get", url, true);
+        xmlhttp.onreadystatechange = callback;
+        xmlhttp.send(null);
+
+    }
+}
+function callback() {
+    if(xmlhttp.readyState == 4){
+        if(xmlhttp.status == 200){
+            if(xmlhttp.responseText == "false"){
+                document.getElementById("checkusername").innerHTML = "<span class='warning'>用户名被占用</span>";
+                username_flag = false;
+            }
+            else{
+                document.getElementById("checkusername").innerHTML = "<span class='warning2'>用户名可用</span>";
+                username_flag = true;
+            }
+
+        }
+    }
+}
+
+//注册验证
 function check_reg(){
     var userpass_flag = true;
     var userphonenum_flag = true;
@@ -9,6 +40,12 @@ function check_reg(){
     var password2 = document.form_Reg.confirmpassword.value;
     var phonenum = document.form_Reg.phonenum.value;
     var email = document.form_Reg.email.value;
+
+    //判断用户名是否可用
+    if(!username_flag){
+        document.getElementById("checkusername").innerHTML = "<span class='warning'>用户名不可用</span>";
+    }
+
     //判断两次输入的密码是否相同
     if(password2 != password1){
         document.getElementById("showpassswordd").innerHTML=" 请保证两次输入的密码一致";
@@ -39,7 +76,7 @@ function check_reg(){
     }
 
     //检查所有要求是否通过
-    if (userpass_flag && userphonenum_flag&& useremail_flag){
+    if (userpass_flag && userphonenum_flag&& useremail_flag && username_flag){
         return true;
     }
     else{

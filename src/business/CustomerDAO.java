@@ -72,4 +72,36 @@ public class CustomerDAO {
         }
         return check;
     }
+
+    public static boolean Check_Regname(String username) {
+        boolean flag = true;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = ConnectionManager.getConnection();
+            String sql = "SELECT user_name from user_info where user_name=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, username);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                flag = false;
+            }
+            else {
+                flag = true;
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return flag;
+    }
+
 }
