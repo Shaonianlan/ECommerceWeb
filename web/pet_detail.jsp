@@ -14,6 +14,7 @@
 <head>
     <title>宠物详情</title>
     <link type="text/css" rel="stylesheet" href="style/style.css">
+    <script src="Check.js?ver=1"></script>
 </head>
     <body>
     <div class="total_div">
@@ -47,13 +48,20 @@
             }
             String pet_name = request.getParameter("pet_detailname");
             Pet pet = PetDAO.getpetdetail(pet_name);
+            Long num = PetDAO.getpet_popularity(pet_name);
         %>
         <div class="pet_div1">
             <div class="pet_pic">
                 <img src=<%=pet.getPet_image()%> width="640px" height="480px">
             </div>
             <div class="pet_div2">
-                <h2 class="pet_h2"><%=pet.getPet_name()%></h2>
+                <div class="pet_div4">
+                    <span class="pet_h2" id="petname"><%=pet_name%></span>
+                    <ul class="pet_ul">
+                        <li id="show_like" class="pet_li"><%=num%></li>
+                        <li class="pet_li">人气值</li>
+                    </ul>
+                </div>
                 <div class="pet_div3">
                     <h4>体型身高</h4>
                     <div><%=pet.getPet_height()%></div>
@@ -74,7 +82,10 @@
                     <h4>参考价格</h4>
                     <div><%=pet.getPet_price()%>RMB</div>
                 </div>
-                <a href="addtocart.jsp?pet_name=<%=pet_name%>" class="pet_a">加入购物车</a>
+                <input type="button" onclick="like_pet();" value="❤" class="pet_button" id="button_like">
+                <input type="button" onclick="addtocart();" value="加入购物车" class="pet_button_add" id="button_addcart">
+                <a href="addtocart.jsp?pet_name=<%=pet_name%>" class="pet_a">立即购买</a>
+                <div id="like_tag"></div>
             </div>
             <div class="clear"></div>
             <div class="pet_div3_first">

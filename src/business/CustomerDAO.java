@@ -124,8 +124,47 @@ public class CustomerDAO {
             else {
                 flag = true;
             }
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
         }
-        catch (SQLException e){
+        return flag;
+    }
+    public static void alter_userphone(String username,String new_phonenum){
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            con = ConnectionManager.getConnection();
+            String sql = "UPDATE user_info SET user_phone = ? where user_name=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, new_phonenum);
+            pstmt.setString(2, username);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+    }
+    public static void alter_useremail(String username, String new_email){
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            con = ConnectionManager.getConnection();
+            String sql = "UPDATE user_info SET user_email = ? where user_name=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, new_email);
+            pstmt.setString(2, username);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         finally {
@@ -133,7 +172,61 @@ public class CustomerDAO {
             ConnectionManager.closeResultSet(rs);
             ConnectionManager.closeStatement(pstmt);
         }
-        return flag;
     }
 
+    public static void alter_useraddress(String username, String new_aadress){
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            con = ConnectionManager.getConnection();
+            String sql = "UPDATE user_info SET user_address = ? where user_name=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, new_aadress);
+            pstmt.setString(2, username);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+    }
+
+    public static int alter_userpassword(String username,String old_password, String new_password){
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int tag = 0;// 0:未执行 1:原密码错误 2:修改成功
+
+        try {
+            con = ConnectionManager.getConnection();
+            String sql = "SELECT user_password from user_info where user_name = ? and user_password = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, username);
+            pstmt.setString(2,old_password);
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+                sql = "UPDATE user_info SET user_password = ? where user_name=?";
+                PreparedStatement pstmt2 = con.prepareStatement(sql);
+                pstmt2.setString(1, new_password);
+                pstmt2.setString(2, username);
+                pstmt2.executeUpdate();
+                tag = 1;
+            }
+            else{
+                tag = 2;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return tag;
+    }
 }

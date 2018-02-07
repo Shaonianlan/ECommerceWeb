@@ -7,8 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="mode.Customer" %>
-<%@ page import="util.ConnectionManager" %>
-<%@ page import="java.sql.*" %>
+<%@ page import="business.CustomerDAO" %>
 <html>
 <head>
     <title>修改手机号</title>
@@ -30,24 +29,7 @@
         if (new_phonenum != null) {
             Customer Log_user = (Customer) session.getAttribute("user");
             String username = Log_user.getUser_name();
-            //连接数据库
-            Connection con = null;
-            PreparedStatement pstmt = null;
-            ResultSet rs = null;
-            try {
-                con = ConnectionManager.getConnection();
-                String sql = "UPDATE user_info SET user_phone = ? where user_name=?";
-                pstmt = con.prepareStatement(sql);
-                pstmt.setString(1, new_phonenum);
-                pstmt.setString(2, username);
-                pstmt.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                ConnectionManager.closeConnection(con);
-                ConnectionManager.closeResultSet(rs);
-                ConnectionManager.closeStatement(pstmt);
-            }
+            CustomerDAO.alter_userphone(username,new_phonenum);
             response.sendRedirect("Alter_userinfo.jsp");
         }
 

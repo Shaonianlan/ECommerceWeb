@@ -7,8 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="mode.Customer" %>
-<%@ page import="util.ConnectionManager " %>
-<%@ page import="java.sql.*" %>
+<%@ page import="business.CustomerDAO" %>
 <html>
 <head>
     <title>修改密码</title>
@@ -33,38 +32,15 @@
         if(old_password != null && new_password != null) {
             Customer Log_user = (Customer) session.getAttribute("user");
             String username = Log_user.getUser_name();
-            //连接数据库
-            Connection con = null;
-            PreparedStatement pstmt = null;
-            ResultSet rs = null;
-            try {
-                con = ConnectionManager.getConnection();
-                String sql = "SELECT user_password from user_info where user_name = ? and user_password = ?";
-                pstmt = con.prepareStatement(sql);
-                pstmt.setString(1, username);
-                pstmt.setString(2,old_password);
-                rs = pstmt.executeQuery();
-                if(rs.next()) {
-                    sql = "UPDATE user_info SET user_password = ? where user_name=?";
-                    PreparedStatement pstmt2 = con.prepareStatement(sql);
-                    pstmt2.setString(1, new_password);
-                    pstmt2.setString(2, username);
-                    pstmt2.executeUpdate();
-                    session.removeAttribute("user");
-                    response.sendRedirect("home.jsp");
-                }
-                else{
-                    out.print("<script type='text/javascript'>alert('原密码错误');</script>");
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+            int tag = 0;// 1:原密码错误 2:修改成功
+            tag = CustomerDAO.alter_userpassword(username,old_password,new_password);
+            if(tag == 1) {
+                session.removeAttribute("user");
+                response.sendRedirect("alter_password_work.jsp");
             }
-            finally {
-                ConnectionManager.closeConnection(con);
-                ConnectionManager.closeResultSet(rs);
-                ConnectionManager.closeStatement(pstmt);
+            else{
+                out.print("<script type='text/javascript'>alert('原密码错误');</script>");
             }
-
         }
     %>
     </body>

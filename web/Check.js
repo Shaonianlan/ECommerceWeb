@@ -113,3 +113,50 @@ function check_newemail() {
     }
     return flag;
 }
+
+//增加喜欢数到数据库
+function like_pet() {
+    document.getElementById("button_like").disabled="disabled";
+
+    var pet_name = document.getElementById("petname").textContent;
+    var url = "cal_likenum.jsp?pet_name="+pet_name+"&time="+new Date().getTime();
+    xmlhttp.open("get", url, true);
+    xmlhttp.onreadystatechange = callback2;
+    xmlhttp.send(null);
+}
+function callback2() {
+    if(xmlhttp.readyState == 4){
+        if(xmlhttp.status == 200){
+            document.getElementById("show_like").innerHTML= xmlhttp.responseText;
+            document.getElementById("like_tag").innerHTML= "<span class='pet_liketag'>已喜欢</span>";
+        }
+        else{
+            document.getElementById("show_like").innerHTML= xmlhttp.status;
+        }
+    }
+    else{
+        document.getElementById("show_like").innerHTML= xmlhttp.readyState;
+    }
+}
+
+function addtocart() {
+    var pet_name = document.getElementById("petname").textContent;
+    var url = "addtocart.jsp?pet_name="+pet_name+"&time="+new Date().getTime();
+    xmlhttp.open("get", url, true);
+    xmlhttp.onreadystatechange = callback3;
+    xmlhttp.send(null);
+    alert("添加成功");
+}
+function callback3() {
+    if(xmlhttp.readyState == 4){
+        if(xmlhttp.status == 200){
+
+        }
+        else{
+            document.getElementById("show_like").innerHTML= xmlhttp.status;
+        }
+    }
+    else{
+        document.getElementById("show_like").innerHTML= xmlhttp.readyState;
+    }
+}

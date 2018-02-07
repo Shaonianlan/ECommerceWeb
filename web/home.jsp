@@ -57,19 +57,40 @@
                 <li class="home_li4"><a href="" class="home_a2">客服通</a></li>
             </ul>
         </div>
-        <div class="home_div4">所有宠物</div>
+        <div class="home_div1">
+            <h3 class="home_h3">人气榜</h3>
+            <ul class="home_ul">
+                <%
+                    List<String> poppets = new ArrayList<String>();
+                    poppets = PetDAO.getpoppets();
+                    Iterator<String> popit = poppets.iterator();
+                    int tag = 0;
+                    while(popit.hasNext()){
+                        tag += 1;
+                        String temp =popit.next();
+                        if(tag <= 3){
+                            out.print("<li class='home_li6'><a href= 'pet_detail.jsp?pet_detailname="+temp+"' class='home_a3' target='_blank'>"+temp+"</a></li>");
+                        }
+                        else {
+                            out.print("<li class='home_li6'><a href= 'pet_detail.jsp?pet_detailname="+temp+"' class='home_a3_else' target='_blank'>"+temp+"</a></li>");
+                        }
+                    }
+                %>
+            </ul>
+        </div>
+        <div class="home_div4">
+            <form action="search_result.jsp" target="_blank">
+                <span>所有宠物</span>
+                <input type="text" name="searchbox" placeholder="宠物的名字" required="required" class="home_input">
+                <input type="submit" value="搜索" class="home_button">
+            </form>
+        </div>
         <div class="home_div">
             <ul>
                 <li class="home_li5_first">人气排行</li>
                 <li class="home_li5">销量排行</li>
                 <li class="home_li5">价格排行</li>
             </ul>
-        </div>
-        <div class="home_div5">
-            <form action="search_result.jsp" target="_blank">
-                <input type="text" name="searchbox" placeholder="宠物的名字" required="required" class="form_input">
-                <input type="submit" value="搜索" class="home_button">
-            </form>
         </div>
         <div class="home_typediv">
         <ul>
