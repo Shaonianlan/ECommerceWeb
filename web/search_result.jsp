@@ -16,6 +16,7 @@
     <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
 <body>
+    <div class="total_div">
     <%
         Customer Log_user = (Customer) session.getAttribute("user");
         Map cart = (Map)session.getAttribute("cart");
@@ -79,7 +80,15 @@
                 <%
             }
         %>
+        </div>
         </ul>
+        <div class="clear"></div>
+        <div class="height2"></div>
+        <div class="tail">
+            <div class="height"></div>
+            <div>本网站仅为课程设计使用，其真实性、合法性本网站不提供任何保证，亦不承担任何法律责任！</div>
+        </div>
+        <div class="height"></div>
     </div>
     </body>
 </html>

@@ -16,8 +16,12 @@
 <html>
 <head>
     <title>创建订单</title>
+    <link type="text/css" rel="stylesheet" href="style/style.css">
+    <meta http-equiv="refresh" content="3; url=home.jsp";>
 </head>
     <body>
+    <div class="total_div">
+    <div class="index_form">
         <%
             request.setCharacterEncoding("UTF-8");
             Map<Integer, CartItemBean> cart = (Map<Integer,CartItemBean>)session.getAttribute("cart");
@@ -30,6 +34,7 @@
             if(cart != null){
                 //生成订单
                 Orders order = new Orders();
+                order.setUser_id(Long.parseLong(user.getUser_id()));
                 order.setUser_name(name);
                 order.setUser_address(address);
                 order.setUser_phone(phone);
@@ -51,8 +56,14 @@
                 orderDAO.createOrder(order);
                 //清除购物车
                 cart.clear();
+                %>
+        <div>恭喜你</div>
+        <div>订单提交成功，3秒后自动跳转到主页</div>
+        <div>或者手动返回<a href="home.jsp">  返回</a></div>
+        <%
             }
-            response.sendRedirect("home.jsp");
         %>
+    </div>
+    </div>
     </body>
 </html>

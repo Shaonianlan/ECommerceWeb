@@ -87,7 +87,7 @@ function check_reg(){
 //检查手机号格式
 function check_newphone() {
     var flag = true;
-    var new_phonenum = document.form_newphone.new_phonenum.value;
+    var new_phonenum = document.getElementById("new_phone").value;
     var myreg = /^1[34578]\d{9}$/;
     if(myreg.test(new_phonenum)){
         flag = true;
@@ -146,17 +146,11 @@ function addtocart() {
     xmlhttp.onreadystatechange = callback3;
     xmlhttp.send(null);
     alert("添加成功");
+    window.location.reload();
 }
 function callback3() {
     if(xmlhttp.readyState == 4){
         if(xmlhttp.status == 200){
-
         }
-        else{
-            document.getElementById("show_like").innerHTML= xmlhttp.status;
-        }
-    }
-    else{
-        document.getElementById("show_like").innerHTML= xmlhttp.readyState;
     }
 }

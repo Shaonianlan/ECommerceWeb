@@ -13,10 +13,12 @@
     <link type="text/css" rel="stylesheet" href="style/style.css">
 </head>
     <body>
+    <div class="total_div">
         <div class="index_form">
             <div>恭喜你，密码修改成功</div>
             <div>你需要重新登陆，3秒后自动跳转到登陆界面。</div>
             <div>或者手动登陆<a href="index.jsp">  登陆</a></div>
         </div>
+    </div>
     </body>
 </html>

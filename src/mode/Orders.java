@@ -7,13 +7,14 @@ import java.util.List;
 public class Orders {
   private Long order_id;
   private String user_name;
+  private Long user_id;
   private String user_address;
   private String user_phone;
   private String order_time;
   private Double order_price;
-  private Long order_status;
+  private Long order_status;// 1:新订单 2:已核对 3:已发货 4:已收货 5:拒收 6:完成
 
-  List<Orderdetail> orderdetail = new ArrayList<Orderdetail>();
+  List<Orderdetail> orderdetaillist = new ArrayList<Orderdetail>();
 
   public Orders(){
     order_status = 1L;
@@ -21,12 +22,12 @@ public class Orders {
   }
 
   public void addOrderdetail(Orderdetail od){
-    orderdetail.add(od);
+    orderdetaillist.add(od);
     order_price += od.getPet_price() * od.getQuantity();
   }
 
   public List<Orderdetail> getOrderdetail() {
-    return orderdetail;
+    return orderdetaillist;
   }
 
   public Long getOrder_id() {
@@ -35,7 +36,7 @@ public class Orders {
 
   public void setOrder_id(Long order_id) {
     this.order_id = order_id;
-    Iterator<Orderdetail> it = orderdetail.iterator();
+    Iterator<Orderdetail> it = orderdetaillist.iterator();
     while(it.hasNext()){
       Orderdetail od = it.next();
       od.setOrder_id(order_id);
@@ -89,4 +90,8 @@ public class Orders {
   public void setOrder_status(Long order_status) {
     this.order_status = order_status;
   }
+
+  public Long getUser_id(){ return user_id; }
+
+  public void setUser_id(Long user_id){ this.user_id = user_id; }
 }

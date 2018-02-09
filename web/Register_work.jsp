@@ -21,20 +21,22 @@
     </script>
 </head>
     <body>
-    <div class="index_form">
-        <%
-            request.setCharacterEncoding("UTF-8");
-            String user_name = request.getParameter("username");
-            String user_password = request.getParameter("password");
-            String sex = request.getParameter("sex");
-            String phonenum = request.getParameter("phonenum");
-            String email = request.getParameter("email");
-            String address = request.getParameter("address");
-            CustomerDAO.DoRegister(user_name,user_password,sex,phonenum,email,address);
-        %>
-        <div>恭喜你</div>
-        <div>注册成功，3秒后自动跳转到登陆界面。</div>
-        <div>或者手动登陆<a href="index.jsp">  登陆</a></div>
+    <div class="total_div">
+        <div class="index_form">
+            <%
+                request.setCharacterEncoding("UTF-8");
+                String user_name = request.getParameter("username");
+                String user_password = request.getParameter("password");
+                String sex = request.getParameter("sex");
+                String phonenum = request.getParameter("phonenum");
+                String email = request.getParameter("email");
+                String address = request.getParameter("address");
+                CustomerDAO.DoRegister(user_name,user_password,sex,phonenum,email,address);
+            %>
+            <div>恭喜你</div>
+            <div>注册成功，3秒后自动跳转到登陆界面。</div>
+            <div>或者手动登陆<a href="index.jsp">  登陆</a></div>
+        </div>
     </div>
     </body>
 </html>
