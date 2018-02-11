@@ -13,6 +13,8 @@
 <head>
     <title>修改个人信息</title>
     <link type="text/css" rel="stylesheet" href="style/style.css">
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="my_jquery.js"></script>
 </head>
     <body>
     <div class="total_div">
@@ -31,23 +33,31 @@
             else {
         %>
         <div class="home_head">
-            <span class="left_float">Welcome to Happy Pet！</span>
-            <span class="home_a">您的购物车里共有 <%=cartitemsnum%> 种宠物</span>
-            <a href='Shopping_cart.jsp' target="_blank" class="home_a">购物车</a>
-            <a href='Logout.jsp' class="home_a">注销</a>
-            <a href='Alter_userinfo.jsp' class="home_a" ><%=Log_user.getUser_name()%></a><br>
+            <ul class="home_ulhead">
+                <li class="left_float">Welcome to Happy Pet！</li>
+                <li class="home_aa">您的购物车里共有 <%=cartitemsnum%> 种宠物</li>
+                <li class="home_a"><a href='Shopping_cart.jsp' target="_blank">购物车</a></li>
+                <li class="home_at" id="user_menu">
+                    <a href='Alter_userinfo.jsp' ><%=Log_user.getUser_name()%></a>
+                    <ul class="usermenu_list">
+                        <li class="usermenu_list_li"><a href="view_orders.jsp">查看订单</a></li>
+                        <li class="usermenu_list_li"><a href="Alter_userinfo.jsp">个人信息</a></li>
+                        <li><a href="Logout.jsp">注销</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         <div class="index_form">
             <%
                 Log_user = CustomerDAO.getLoginInfo(Log_user.getUser_name());
-                out.print("<a href='view_orders.jsp'  target='_blank'>查看订单</a><br>");
-                out.print("用户名："+Log_user.getUser_name()+"<br>");
-                out.print("性别："+Log_user.getUser_sex()+"<br>");
-                out.print("手机号："+Log_user.getUser_phone()+"<a href='alter_phonenum.jsp'>    修改</a><br>");
-                out.print("邮箱："+Log_user.getUser_email()+"<a href='alter_email.jsp'>    修改</a><br>");
-                out.print("发货地址："+Log_user.getUser_address()+"<a href='alter_address.jsp'>  修改</a><br>");
+                out.print("<div>用户名："+Log_user.getUser_name()+"</div>");
+                out.print("<div>性别："+Log_user.getUser_sex()+"</div>");
+                out.print("<div>注册时间:"+Log_user.getUser_createtime()+"</div>");
+                out.print("<div>手机号："+Log_user.getUser_phone()+"<a href='alter_phonenum.jsp'>    修改</a></div>");
+                out.print("<div>邮箱："+Log_user.getUser_email()+"<a href='alter_email.jsp'>    修改</a></div>");
+                out.print("<div>发货地址："+Log_user.getUser_address()+"<a href='alter_address.jsp'>  修改</a></div>");
             %>
-            <a href="alter_password.jsp">修改密码</a><br>
+            <div><a href="alter_password.jsp">修改密码</a></div>
             <a href="home.jsp">返回</a>
         </div>
         <%

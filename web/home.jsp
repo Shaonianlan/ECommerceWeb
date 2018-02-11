@@ -14,6 +14,8 @@
 <head>
     <title>Happy Pet</title>
     <link type="text/css" rel="stylesheet" href="style/style.css">
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="my_jquery.js"></script>
 </head>
     <body>
     <div class="total_div">
@@ -31,19 +33,28 @@
             <div class="home_head">
                 <span class="left_float">Welcome to Happy Pet！</span>
                 <a href='Shopping_cart.jsp' target='_blank'class='home_aa'>购物车</a>
-                <a href='index.jsp'class='home_a'>登陆</a><br>
+                <a href='index.jsp'class='home_a'>登陆</a>
             </div>
         <%
             }
             else {
         %>
             <div class="home_head">
-                <span class="left_float">Welcome to Happy Pet！</span>
-                <span class="home_aa">您的购物车里共有 <%=cartitemsnum%> 种宠物</span>
-                <a href='Shopping_cart.jsp' target="_blank" class="home_a">购物车</a>
-                <a href='Logout.jsp' class="home_a">注销</a>
-                <a href='Alter_userinfo.jsp' class="home_a" ><%=Log_user.getUser_name()%></a><br>
+                <ul class="home_ulhead">
+                    <li class="left_float">Welcome to Happy Pet！</li>
+                    <li class="home_aa">您的购物车里共有 <%=cartitemsnum%> 种宠物</li>
+                    <li class="home_a"><a href='Shopping_cart.jsp' target="_blank">购物车</a></li>
+                    <li class="home_at" id="user_menu">
+                        <a href='Alter_userinfo.jsp' ><%=Log_user.getUser_name()%></a>
+                        <ul class="usermenu_list">
+                            <li class="usermenu_list_li"><a href="view_orders.jsp">查看订单</a></li>
+                            <li class="usermenu_list_li"><a href="Alter_userinfo.jsp">个人信息</a></li>
+                            <li><a href="Logout.jsp">注销</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
+        <div class="clear"></div>
         <%
             }
         %>
@@ -58,6 +69,8 @@
             </ul>
         </div>
         <div class="home_div1">
+            <div class="home_divl">
+                <div class="height2"></div>
             <h3 class="home_h3">人气榜</h3>
             <ul class="home_ul">
                 <%
@@ -77,10 +90,25 @@
                     }
                 %>
             </ul>
+            </div>
+            <button class="home_btnl" id="left"><</button>
+            <div class="home_pic">
+                <div class="home_imgbox" id="imgbox">
+                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=金毛"><img src="/image/dog24_1.jpg"></a> </div>
+                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=柴犬"><img src="/image/dog10_1.jpg"></a></div>
+                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=英国斗牛犬"><img src="/image/dog9_1.jpg"></a></div>
+                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=拉布拉多犬"><img src="/image/dog3_1.jpg"></a></div>
+                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=哈士奇"><img src="/image/dog14_1.jpg"></a></div>
+                </div>
+            </div>
+            <button class="home_btnr" id="right">></button>
         </div>
+        <div class="clear"></div>
+        <div class="height"></div>
+        <div class="height2"></div>
         <div class="home_div4">
             <form action="search_result.jsp" target="_blank">
-                <span>所有宠物</span>
+                <span class="home_chap">所有宠物</span>
                 <input type="text" name="searchbox" placeholder="宠物的名字" required="required" class="home_input">
                 <input type="submit" value="搜索" class="home_button">
             </form>

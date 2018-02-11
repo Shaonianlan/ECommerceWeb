@@ -260,7 +260,7 @@ public class PetDAO {
 
         try{
             con = ConnectionManager.getConnection();
-            String sql = "SELECT pet_name from pets_popularity ORDER BY pet_popularity DESC LIMIT 8 ";
+            String sql = "SELECT pet_name from pets_popularity ORDER BY pet_popularity DESC LIMIT 10 ";
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
             while(rs.next()){
