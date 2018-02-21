@@ -54,6 +54,32 @@ public class OrderDAO {
                     pstmt.setLong(4,ods.getQuantity());
                     pstmt.setDouble(5,ods.getPet_price());
                     pstmt.executeUpdate();
+
+                    //销售记录插入销量表
+                    sql = "SELECT pet_sales from sales where pet_id = ?";
+                    pstmt = con.prepareStatement(sql);
+                    pstmt.setLong(1,ods.getPet_id());
+                    rs = pstmt.executeQuery();
+
+                    Long pet_sales = 0l;
+                    if(rs.next()){
+                        pet_sales = rs.getLong("pet_sales");
+                        pet_sales += ods.getQuantity();
+                        sql = "UPDATE sales SET pet_sales = ? where pet_id=?";
+                        pstmt = con.prepareStatement(sql);
+                        pstmt.setLong(1,pet_sales);
+                        pstmt.setLong(2,ods.getPet_id());
+                        pstmt.executeUpdate();
+                    }
+                    else{
+                        sql = "INSERT into sales(pet_id,pet_name,pet_sales) values(?,?,?)";
+                        pstmt = con.prepareStatement(sql);
+                        pstmt.setLong(1,ods.getPet_id());
+                        pstmt.setString(2,ods.getPet_name());
+                        pstmt.setLong(3,1l);
+                        pstmt.executeUpdate();
+                    }
+
                 }
             }
         } catch(SQLException e) {
@@ -88,6 +114,7 @@ public class OrderDAO {
                 order.setOrder_price(rs.getDouble("order_price"));
                 order.setOrder_time(rs.getString("order_time"));
                 order.setOrder_status(rs.getLong("order_status"));
+
                 orderslist.add(order);
             }
         } catch(SQLException e) {
@@ -134,4 +161,5 @@ public class OrderDAO {
         }
         return orderdetaillist;
     }
+
 }

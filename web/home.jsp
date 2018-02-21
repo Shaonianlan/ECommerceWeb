@@ -31,7 +31,7 @@
             if(Log_user == null){
         %>
             <div class="home_head">
-                <span class="left_float">Welcome to Happy Pet！</span>
+                <span class="left_float"><a href="home.jsp" class="a_color">Welcome to Happy Pet！</a></span>
                 <a href='Shopping_cart.jsp' target='_blank'class='home_aa'>购物车</a>
                 <a href='index.jsp'class='home_a'>登陆</a>
             </div>
@@ -41,14 +41,14 @@
         %>
             <div class="home_head">
                 <ul class="home_ulhead">
-                    <li class="left_float">Welcome to Happy Pet！</li>
+                    <li class="left_float"><a href="home.jsp" class="a_color">Welcome to Happy Pet！</a></li>
                     <li class="home_aa">您的购物车里共有 <%=cartitemsnum%> 种宠物</li>
                     <li class="home_a"><a href='Shopping_cart.jsp' target="_blank">购物车</a></li>
                     <li class="home_at" id="user_menu">
                         <a href='Alter_userinfo.jsp' ><%=Log_user.getUser_name()%></a>
                         <ul class="usermenu_list">
-                            <li class="usermenu_list_li"><a href="view_orders.jsp">查看订单</a></li>
-                            <li class="usermenu_list_li"><a href="Alter_userinfo.jsp">个人信息</a></li>
+                            <li class="usermenu_list_li"><a href="view_orders.jsp" target="_blank">查看订单</a></li>
+                            <li class="usermenu_list_li"><a href="Alter_userinfo.jsp" target="_blank">个人信息</a></li>
                             <li><a href="Logout.jsp">注销</a></li>
                         </ul>
                     </li>
@@ -94,11 +94,11 @@
             <button class="home_btnl" id="left"><</button>
             <div class="home_pic">
                 <div class="home_imgbox" id="imgbox">
-                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=金毛"><img src="/image/dog24_1.jpg"></a> </div>
-                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=柴犬"><img src="/image/dog10_1.jpg"></a></div>
-                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=英国斗牛犬"><img src="/image/dog9_1.jpg"></a></div>
-                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=拉布拉多犬"><img src="/image/dog3_1.jpg"></a></div>
-                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=哈士奇"><img src="/image/dog14_1.jpg"></a></div>
+                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=金毛" target="_blank"><img src="/image/dog24_1.jpg"></a> </div>
+                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=柴犬" target="_blank"><img src="/image/dog10_1.jpg"></a></div>
+                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=英国斗牛犬" target="_blank"><img src="/image/dog9_1.jpg"></a></div>
+                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=拉布拉多犬" target="_blank"><img src="/image/dog3_1.jpg"></a></div>
+                    <div class="home_img"><a href="pet_detail.jsp?pet_detailname=哈士奇" target="_blank"><img src="/image/dog14_1.jpg"></a></div>
                 </div>
             </div>
             <button class="home_btnr" id="right">></button>
@@ -115,9 +115,9 @@
         </div>
         <div class="home_div">
             <ul>
-                <li class="home_li5_first">人气排行</li>
-                <li class="home_li5">销量排行</li>
-                <li class="home_li5">价格排行</li>
+                <li class="home_li5_first"><a href="sort_pets.jsp?sortstyle=popularity&sortorder=desc">人气排行</a> </li>
+                <li class="home_li5"><a href="sort_pets.jsp?sortstyle=sales&sortorder=desc">销量排行</a></li>
+                <li class="home_li5"><a href="sort_pets.jsp?sortstyle=price&sortorder=asc">价格排行</a></li>
             </ul>
         </div>
         <div class="home_typediv">
@@ -134,7 +134,7 @@
                 out.print("<ul>");
                 while(typeit.hasNext()){
                     String typepet = typeit.next();
-                    out.print("<a href= 'pet_detail.jsp?pet_detailname="+typepet+"'><li class='home_li2'>"+typepet+"</li></a>");
+                    out.print("<a href= 'pet_detail.jsp?pet_detailname="+typepet+"'class='a_color'><li class='home_li2'>"+typepet+"</li></a>");
                 }
                 out.print("</ul>");
             }
@@ -150,7 +150,7 @@
         %>
                 <dl class="home_dl">
                     <dt class="home_dt"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" target="_blank"><img src=<%=petlist.get(i).getPet_image()+"?t="+Math.random()%> width="180px" height="120px"></a> </dt>
-                    <dd class="home_dd"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" target="_blank"><%=petlist.get(i).getPet_name()%></a> </dd>
+                    <dd class="home_dd"><a href= "pet_detail.jsp?pet_detailname=<%=petlist.get(i).getPet_name()%>" class="a_color" target="_blank"><%=petlist.get(i).getPet_name()%></a> </dd>
                 </dl>
         <%
             }

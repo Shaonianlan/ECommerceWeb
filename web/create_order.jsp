@@ -30,7 +30,7 @@
             String address = request.getParameter("address");
             String phone = request.getParameter("phone");
             Date dt = new Date();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             if(cart != null){
                 //生成订单
                 Orders order = new Orders();

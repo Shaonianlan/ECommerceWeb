@@ -31,7 +31,7 @@
         if(Log_user == null){
     %>
             <div class="home_head">
-                <span class="left_float">Welcome to Happy Pet！</span>
+                <span class="left_float"><a href="home.jsp" class="a_color">Welcome to Happy Pet！</a></span>
                 <a href='Shopping_cart.jsp' target='_blank'class='home_a'>购物车</a>
                 <a href='index.jsp'class='home_a'>登陆</a>
             </div>
@@ -41,7 +41,7 @@
             %>
             <div class="home_head">
                 <ul class="home_ulhead">
-                    <li class="left_float">Welcome to Happy Pet！</li>
+                    <li class="left_float"><a href="home.jsp" class="a_color">Welcome to Happy Pet！</a></li>
                     <li class="home_aa">您的购物车里共有 <%=cartitemsnum%> 种宠物</li>
                     <li class="home_a"><a href='Shopping_cart.jsp' target="_blank">购物车</a></li>
                     <li class="home_at" id="user_menu">

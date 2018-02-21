@@ -278,4 +278,235 @@ public class PetDAO {
         }
         return poppets;
     }
+
+    public static List<Pet> getpopsortPet_desc(){
+        List<Pet> petsortlist = new ArrayList<Pet>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            con = ConnectionManager.getConnection();
+            String sql = "select * from pet_info,pets_popularity where pet_info.pet_name = pets_popularity.pet_name order by pet_popularity DESC ";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Pet pet = new Pet();
+                pet.setPet_name(rs.getString("pet_name"));
+                pet.setPet_life(rs.getString("pet_life"));
+                pet.setPet_type(rs.getString("pet_type"));
+                pet.setPet_sourcearea(rs.getString("pet_sourcearea"));
+                pet.setPet_price(rs.getDouble("pet_price"));
+                pet.setPet_image(rs.getString("pet_image"));
+
+                petsortlist.add(pet);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return petsortlist;
+    }
+
+    public static List<Pet> getpopsortPet_asc(){
+        List<Pet> petsortlist = new ArrayList<Pet>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            con = ConnectionManager.getConnection();
+            String sql = "select * from pet_info,pets_popularity where pet_info.pet_name = pets_popularity.pet_name order by pet_popularity asc";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Pet pet = new Pet();
+                pet.setPet_name(rs.getString("pet_name"));
+                pet.setPet_life(rs.getString("pet_life"));
+                pet.setPet_type(rs.getString("pet_type"));
+                pet.setPet_sourcearea(rs.getString("pet_sourcearea"));
+                pet.setPet_price(rs.getDouble("pet_price"));
+                pet.setPet_image(rs.getString("pet_image"));
+
+                petsortlist.add(pet);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return petsortlist;
+    }
+
+    //价格asc
+    public static List<Pet> getpricesortPet_desc(){
+        List<Pet> petsortlist = new ArrayList<Pet>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            con = ConnectionManager.getConnection();
+            String sql = "select * from pet_info order by pet_price desc";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Pet pet = new Pet();
+                pet.setPet_name(rs.getString("pet_name"));
+                pet.setPet_life(rs.getString("pet_life"));
+                pet.setPet_type(rs.getString("pet_type"));
+                pet.setPet_sourcearea(rs.getString("pet_sourcearea"));
+                pet.setPet_price(rs.getDouble("pet_price"));
+                pet.setPet_image(rs.getString("pet_image"));
+
+                petsortlist.add(pet);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return petsortlist;
+    }
+
+    public static List<Pet> getpricesortPet_asc(){
+        List<Pet> petsortlist = new ArrayList<Pet>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            con = ConnectionManager.getConnection();
+            String sql = "select * from pet_info order by pet_price asc";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Pet pet = new Pet();
+                pet.setPet_name(rs.getString("pet_name"));
+                pet.setPet_life(rs.getString("pet_life"));
+                pet.setPet_type(rs.getString("pet_type"));
+                pet.setPet_sourcearea(rs.getString("pet_sourcearea"));
+                pet.setPet_price(rs.getDouble("pet_price"));
+                pet.setPet_image(rs.getString("pet_image"));
+
+                petsortlist.add(pet);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return petsortlist;
+    }
+
+
+    //获取销量 asc
+    public static List<Pet> getpet_sales_asc(){
+        List<Pet> petsortlist = new ArrayList<Pet>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            con = ConnectionManager.getConnection();
+            String sql = "select * from sales,pet_info where sales.pet_name = pet_info.pet_name order by pet_sales asc";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Pet pet = new Pet();
+                pet.setPet_name(rs.getString("pet_name"));
+                pet.setPet_life(rs.getString("pet_life"));
+                pet.setPet_type(rs.getString("pet_type"));
+                pet.setPet_sourcearea(rs.getString("pet_sourcearea"));
+                pet.setPet_price(rs.getDouble("pet_price"));
+                pet.setPet_image(rs.getString("pet_image"));
+
+                petsortlist.add(pet);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return petsortlist;
+    }
+    //获取销量 desc
+    public static List<Pet> getpet_sales_desc(){
+        List<Pet> petsortlist = new ArrayList<Pet>();
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            con = ConnectionManager.getConnection();
+            String sql = "select * from sales,pet_info where sales.pet_name = pet_info.pet_name order by pet_sales desc";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Pet pet = new Pet();
+                pet.setPet_name(rs.getString("pet_name"));
+                pet.setPet_life(rs.getString("pet_life"));
+                pet.setPet_type(rs.getString("pet_type"));
+                pet.setPet_sourcearea(rs.getString("pet_sourcearea"));
+                pet.setPet_price(rs.getDouble("pet_price"));
+                pet.setPet_image(rs.getString("pet_image"));
+
+                petsortlist.add(pet);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return petsortlist;
+    }
+
+    //通过宠物名称获取销量
+    public static Long getpet_salesbypetname(String pet_name){
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Long sales = 0l;
+
+        try{
+            con = ConnectionManager.getConnection();
+            String sql = "SELECT pet_sales from sales where pet_name = ? ";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,pet_name);
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) {
+                sales = rs.getLong("pet_sales");
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        finally {
+            ConnectionManager.closeConnection(con);
+            ConnectionManager.closeResultSet(rs);
+            ConnectionManager.closeStatement(pstmt);
+        }
+        return sales;
+    }
+
 }

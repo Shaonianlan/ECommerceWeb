@@ -312,6 +312,10 @@
 .search_td{
     width: 25%;
 }
+.search_tdred{
+    width: 25%;
+    color: red;
+}
 .search_li{
     font-size: 16px;
     font-weight: normal;
@@ -326,6 +330,9 @@
     background-color: aliceblue;
     text-align: left;
     margin-top: 15px;
+}
+.search_div2_a{
+    margin-left: 20px;
 }
 
 /*宠物详情*/
@@ -521,6 +528,9 @@
 }
 
 /*通用*/
+.a_color{
+    color: black;
+}
 .left_float{
     float: left;
     margin-left: 10px;

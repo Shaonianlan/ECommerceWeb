@@ -30,19 +30,13 @@
             int cartitemsnum = cart.size();
             List<String> pettypelist = new ArrayList<String>();
             if(Log_user == null){
-        %>
-        <div class="home_head">
-            <span class="left_float">Welcome to Happy Pet！</span>
-            <a href='Shopping_cart.jsp' target='_blank'class='home_a'>购物车</a>
-            <a href='index.jsp'class='home_a'>登陆</a>
-        </div>
-        <%
+                response.sendRedirect("home.jsp");
         }
         else {
         %>
         <div class="home_head">
             <ul class="home_ulhead">
-                <li class="left_float">Welcome to Happy Pet！</li>
+                <li class="left_float"><a href="home.jsp" class="a_color">Welcome to Happy Pet！</a></li>
                 <li class="home_aa">您的购物车里共有 <%=cartitemsnum%> 种宠物</li>
                 <li class="home_a"><a href='Shopping_cart.jsp' target="_blank">购物车</a></li>
                 <li class="home_at" id="user_menu">
@@ -60,7 +54,7 @@
             orderslist = OrderDAO.getOrdersByuserId(Long.parseLong(Log_user.getUser_id()));
             int orderlist_size = orderslist.size();
             out.print("<div class = 'height'></div>");
-            out.print("<div class='view_div'>共查到 "+orderlist_size+" 条订单记录</div>");
+            out.print("<div class='view_div'>共查到 "+orderlist_size+" 条订单记录  (订单状态：1:新订单 2:已核对 3:已发货 4:已收货 5:拒收 6:完成)</div>");
             out.print("<ul class='view_ul'>");
             Iterator<Orders> ordersit = orderslist.iterator();
             while(ordersit.hasNext()){
@@ -71,6 +65,7 @@
                         <tr>
                             <td rowspan="6">
                                 <div>订单号：<%=order.getOrder_id()%></div>
+                                <div>订单状态：<%=order.getOrder_status()%></div>
                                 <div>订单时间：<%=order.getOrder_time()%></div>
                                 <div>总金额：<%=order.getOrder_price()%>元</div>
                                 <div>收货人：<%=order.getUser_name()%></div>
